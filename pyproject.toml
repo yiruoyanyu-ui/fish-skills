@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fish-skills"
+version = "0.1.0"
+description = "Versioned Fish Skills publishing and read-only MCP distribution"
+requires-python = ">=3.11"
+dependencies = ["boto3>=1.40,<2", "mcp>=1.18,<2"]
+
+[project.scripts]
+fish-skills = "fish_skills.cli:main"
+fish-skills-mcp = "fish_skills.mcp_server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

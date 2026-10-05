@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0-preview.1",
+  "channel": "preview",
+  "skills": [
+    {
+      "id": "explainer-video",
+      "entry": "skills/explainer-video/SKILL.md",
+      "description": "把一段科普/解说材料做成带旁白和字幕的解说短视频（图示驱动的合成片）。 Trigger on: 解说视频、科普视频、讲解视频、explainer、把这段材料做成视频。 Exclude: 实拍/出镜视频、UGC、纯旁白（用 narration 页）、音乐 MV。 教学视角豁免：本页是\"图解/剖面/示意\"的**点名场景**（解说视频的正当形态）， 商品图与封面页的教学视角禁令在本页不适用，但仍禁无文字画面外标签烧字。",
+      "status": "dormant"
+    },
+    {
+      "id": "fish-api-asr",
+      "entry": "skills/fish-api-asr/SKILL.md",
+      "description": "教开发者用 Fish Audio REST API 做语音转文字（ASR）：上传音频文件，拿到文本、词/字级时间戳、 说话人分段（speaker_turns）。Use when 要写代码转写音频、做字幕/对齐、会议或多人对话转写、 长录音（最长 60 分钟）、排查 segments 为空 / 没有说话人标记 / 503 / 对比 MCP speech_to_text。 需先通过 fish-api-setup。读者=开发者。",
+      "status": "experimental"
+    },
+    {
+      "id": "fish-api-setup",
+      "entry": "skills/fish-api-setup/SKILL.md",
+      "description": "帮开发者配置并验证 Fish Audio API key，并讲清额度、限流、计费的坑。Use when 用户要接入 Fish Audio API、调用返回 401/402/429、问\"怎么拿 API key / 怎么查余额 / 为什么平台里有 credits 却调不通\"、或其他 fish-api-* 页面需要前置检查。先查已有 key 是否可用，可用则跳过； 只在需要时才引导创建。读者=开发者（写代码调 API 的人）。",
+      "status": "experimental"
+    },
+    {
+      "id": "fish-api-tts",
+      "entry": "skills/fish-api-tts/SKILL.md",
+      "description": "教开发者/Agent 用 Fish Audio REST API 做文本转语音：基础合成、输出格式与采样率、语速音量、 多说话人对话、零样本克隆（MessagePack）、流式字/词级时间戳（SSE）、实时 WebSocket。 Use when 要写代码调用 Fish TTS、需要字幕级时间戳、做对话/实时配音应用、选 model/format/参数、 排查 400/402/429。需先通过 fish-api-setup 确认 key 与余额。 读者=开发者；终端用户要成品音频请用 narration 页。",
+      "status": "experimental"
+    },
+    {
+      "id": "fish-api-voice-design",
+      "entry": "skills/fish-api-voice-design/SKILL.md",
+      "description": "用文字描述生成全新音色（Fish 特色能力）：POST /v1/voice-design，同步返回 1–4 个带 WAV 音频的 候选音色。Use when 开发者要\"按描述生成声音\"、做角色音色选择器、了解设计出的声音能否持久化复用。 需先通过 fish-api-setup。读者=开发者。",
+      "status": "experimental"
+    },
+    {
+      "id": "fish-api-voices",
+      "entry": "skills/fish-api-voices/SKILL.md",
+      "description": "教开发者用 Fish Audio REST API 管理音色库：列出/搜索公开音色拿 reference_id、查询详情、 创建（克隆）私有音色、删除。Use when 要选音色、把用户的声音样本变成可反复使用的音色、 清理测试音色、搞清 reference_id 从哪来。需先通过 fish-api-setup。读者=开发者。",
+      "status": "experimental"
+    },
+    {
+      "id": "fish-media-router",
+      "entry": "skills/fish-media-router/SKILL.md",
+      "description": "路由 Fish Audio 媒体生成请求。Use when 用户要创建或编辑媒体：商品商业图/图组 （product photo series）、单张图片、封面图（thumbnail/cover）。 触发词：商品图、电商图、产品摄影、白底图、场景图、封面、缩略图、thumbnail、 视频封面、旁白、配音、念稿、TTS、商品视频、带货视频、产品短视频、 给…做一张/一组图。 Do NOT use for: 视频生成请求、旁白/配音请求、纯文本写作、代码任务、与媒体生成 无关的问答、平台账户/计费/卡单排障（暂无专门配方页，按通用排障处理）。不要因为 用户提到\"图片\"二字就接管本机文件操作（格式转换、截图等）。",
+      "status": "experimental"
+    },
+    {
+      "id": "narration",
+      "entry": "skills/narration/SKILL.md",
+      "description": "把文本变成自然旁白/配音音频（单段或多段）。Trigger on: 旁白、配音、念稿、 TTS、给视频配旁白、把这段文字读出来。Exclude: 视频内嵌口播（ugc 类）、 歌声、变声、把音频转文字（那是 ASR）、给视频换语言配音（配音本地化未包含）。 无人值守+文本缺失 → 中止报告阻塞（旁白没有文本就没有任务）。",
+      "status": "experimental"
+    },
+    {
+      "id": "product-photo-series",
+      "entry": "skills/product-photo-series/SKILL.md",
+      "description": "从商品参考图制作一组协调的商业图片（1:1 电商系列：白底棚拍变体 / 桌面使用 场景 / 细节近景），或对已有商品图做风格重绘。Require 用户有商品参考照片， 或任务明示接受文字兜底。Trigger on: 商品图、电商图、产品摄影、白底棚拍、 场景图、细节近景、商业图系列、给…做一组图。 仅适用于饮器/保温容器类商品（品类判定见流程）；其他品类如实告知暂未覆盖。 Exclude 非商品类图片、视频请求、旁白请求——这些配方页尚未包含，如实告知。",
+      "status": "experimental"
+    },
+    {
+      "id": "subtitles-burn",
+      "entry": "skills/subtitles-burn/SKILL.md",
+      "description": "给视频或图文+音频合成物烧录硬字幕。Trigger on: 加字幕、硬字幕、烧字幕、 字幕同步、subtitles。Exclude: 软字幕封装（外挂 srt 未包含）、翻译字幕 （配音本地化未包含）、视频剪辑。 **精度声明（v0.1 必读）**：Fish MCP 的 ASR 不返回字级/句级时间戳（平台缺口已 登记），本页 v0.1 使用标点均分时间轴（近似同步）；有用户提供 SRT/时间轴时优先用 户数据。字级精确同步待平台暴露 TTS-with-timestamps 或 ASR 时间戳后升级。",
+      "status": "dormant"
+    },
+    {
+      "id": "thumbnail-cover",
+      "entry": "skills/thumbnail-cover/SKILL.md",
+      "description": "为视频/内容制作封面图（YouTube 16:9 / 竖版 9:16 / 方图），或对已有封面做修改。 Require 用户请求制作或修改封面图本身；只评分析、只要标题建议 = 纯文本任务不触发生图。 Trigger on: 封面、缩略图、thumbnail、视频封面、频道封面、封面图设计、给视频配封面。 v0.1 范围边界：无人像封面（产品/静物/图形/景观类框架）已支持； 出镜人物封面需人脸参考图锁定（链路同商品图编辑，未验证，首次先告知）。 Exclude 普通配图（无封面意图）、视频本体、视频内插卡。",
+      "status": "experimental"
+    },
+    {
+      "id": "ugc-product-video",
+      "entry": "skills/ugc-product-video/SKILL.md",
+      "description": "商品主角+画外音的带货短视频（无人出镜；人物只允许手/局部/POV 且非主角）。 Trigger on: 商品视频、带货视频、产品短视频、UGC 商品视频、给商品拍个视频。 Require：真实商品参考图 + 时长（缺→一次性打包问，给 10/15/30/45s 选项）。 Exclude：无旁白的纯视频（直接走普通视频生成）、出镜讲解/开箱/教程/试穿 （人物一致性未验证）、剪辑已有视频。",
+      "status": "experimental"
+    }
+  ]
+}
