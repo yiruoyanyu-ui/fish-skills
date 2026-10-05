@@ -50,7 +50,7 @@ R2 → Manage R2 API Tokens → 创建只针对该 bucket 的 Object Read & Writ
 
 ```text
 fish-skills/
-  releases/0.1.0-preview.1/
+  releases/0.1.0-preview.2/
     manifest.json
     skills/product-photo-series/SKILL.md
     skills/shared/core-skeleton.md

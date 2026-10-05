@@ -2,6 +2,7 @@
 import json
 import os
 import subprocess
+import tempfile
 from pathlib import Path
 
 from fish_skills.bundle import sha256
@@ -37,17 +38,17 @@ def main():
         ref = json.loads(gh("api", f"repos/{repo}/git/tags/{ref['sha']}"))["object"]
     if ref["type"] != "commit" or ref["sha"] != commit:
         raise ValueError("Release tag already belongs to a different commit")
-    existing = subprocess.run(["gh", "api", f"repos/{repo}/releases/tags/{tag}"], capture_output=True, text=True)
-    if existing.returncode:
-        # Distinguish a missing release from permissions/network errors.
-        if "404" not in existing.stderr:
-            raise RuntimeError("Cannot inspect existing GitHub release")
-        args = ["release", "create", tag, "--repo", repo, "--target", commit, "--draft",
-                "--title", f"Fish Skills {version}", "--notes-file", "docs/RELEASE_NOTES.md"]
-        if manifest["channel"] == "preview":
-            args.append("--prerelease")
-        gh(*args)
-    release = json.loads(gh("api", f"repos/{repo}/releases/tags/{tag}"))
+    # The by-tag endpoint may return 404 for draft releases; list with write access instead.
+    pages = json.loads(gh("api", "--paginate", "--slurp", f"repos/{repo}/releases?per_page=100"))
+    release = next((r for page in pages for r in page if r["tag_name"] == tag), None)
+    if release is None:
+        body = {"tag_name": tag, "target_commitish": commit, "draft": True,
+                "prerelease": manifest["channel"] == "preview", "name": f"Fish Skills {version}",
+                "body": Path("docs/RELEASE_NOTES.md").read_text()}
+        with tempfile.NamedTemporaryFile("w", suffix=".json") as file:
+            json.dump(body, file)
+            file.flush()
+            release = json.loads(gh("api", "--method", "POST", f"repos/{repo}/releases", "--input", file.name))
     expected = [archive, Path("dist/manifest.json"), Path("dist/checksums.json")]
     assets = {a["name"]: a for a in release["assets"]}
     for path in expected:
@@ -66,7 +67,7 @@ def main():
         result = publish(store, archive, activate=True)
         Path("dist/r2-publication.json").write_text(json.dumps(result, indent=2) + "\n")
     if release["draft"]:
-        gh("release", "edit", tag, "--repo", repo, "--draft=false")
+        gh("api", "--method", "PATCH", f"repos/{repo}/releases/{release['id']}", "-F", "draft=false")
     print(json.dumps({"version": version, "channel": manifest["channel"], "backend": backend,
                       "release_url": release["html_url"]}))
 

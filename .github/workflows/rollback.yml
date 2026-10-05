@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'An existing verified release version, e.g. 0.1.0-preview.1'
+        description: 'An existing verified release version, e.g. 0.1.0-preview.2'
         type: string
         required: true
       channel:

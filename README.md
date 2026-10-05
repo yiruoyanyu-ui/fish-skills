@@ -31,7 +31,7 @@ GitHub 是源文件，R2 是版本发放存储，MCP 是读取入口。上传文
 ```bash
 uv sync --locked
 uv run --locked fish-skills build
-uv run --locked fish-skills publish dist/fish-skills-0.1.0-preview.1.zip --activate
+uv run --locked fish-skills publish dist/fish-skills-0.1.0-preview.2.zip --activate
 uv run --locked fish-skills read --skill product-photo-series
 ```
 
