@@ -19,9 +19,9 @@ uv run --locked fish-skills-mcp
 
 ## GitHub Release 读取模式
 
-设置 `FISH_SKILLS_BACKEND=github`、`FISH_SKILLS_GITHUB_REPOSITORY=OWNER/fish-skills`、`FISH_SKILLS_CHANNEL=preview`。私有仓库需本机 gh 已登录，或在服务环境设置只读 `FISH_SKILLS_GITHUB_TOKEN`。实现不会把令牌写进下载 URL；跨域下载跳转不会携带 GitHub Authorization。
+设置 `FISH_SKILLS_BACKEND=github`、`FISH_SKILLS_GITHUB_REPOSITORY=yiruoyanyu-ui/fish-skills`、`FISH_SKILLS_CHANNEL=preview`。公开仓库可匿名读取，无需 R2 凭证。私有仓库需本机 gh 已登录，或在服务环境设置只读 `FISH_SKILLS_GITHUB_TOKEN`。实现不会把令牌写进下载 URL；跨域下载跳转不会携带 GitHub Authorization。
 
-MCP 客户端配置示例（替换目录与 owner；客户端字段格式以实际配置为准）：
+MCP 客户端配置示例（替换目录；客户端字段格式以实际配置为准）：
 
 ```json
 {
@@ -31,7 +31,7 @@ MCP 客户端配置示例（替换目录与 owner；客户端字段格式以实�
       "args": ["--directory", "/absolute/path/to/fish-skills", "run", "--locked", "fish-skills-mcp"],
       "env": {
         "FISH_SKILLS_BACKEND": "github",
-        "FISH_SKILLS_GITHUB_REPOSITORY": "OWNER/fish-skills",
+        "FISH_SKILLS_GITHUB_REPOSITORY": "yiruoyanyu-ui/fish-skills",
         "FISH_SKILLS_CHANNEL": "preview"
       }
     }

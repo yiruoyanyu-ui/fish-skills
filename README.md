@@ -24,9 +24,16 @@ flowchart LR
 
 GitHub 是源文件，R2 是版本发放存储，MCP 是读取入口。上传文档不会自动调用生成工具，也不会安装或执行参考脚本。
 
+## 同事试用入口
+
+- [快速浏览与试用](docs/COLLEAGUE_QUICKSTART.md)：先看 Skill，再连接只读 MCP。
+- [当前预览发布包](https://github.com/yiruoyanyu-ui/fish-skills/releases/tag/v0.1.0-preview.2)：固定版本，便于讨论和复现。
+
+公开仓库与 GitHub Release 无需 R2 密钥即可读取；实际媒体生成仍需各自授权 Fish Audio 账户。当前预览版不是效果已验收的稳定版。
+
 ## 本地开始
 
-需要 Python 3.11+、uv；GitHub 私有版读取还需本机 gh 已登录，或设置只读 `FISH_SKILLS_GITHUB_TOKEN`。
+需要 Python 3.11+、uv。公开 GitHub Release 可以匿名读取；只有私有仓库读取才需要 GitHub 授权。
 
 ```bash
 uv sync --locked
