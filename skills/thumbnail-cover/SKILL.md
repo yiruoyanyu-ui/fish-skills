@@ -1,38 +1,28 @@
 ---
 name: thumbnail-cover
-description: |
-  为视频/内容制作封面图（YouTube 16:9 / 竖版 9:16 / 方图），或对已有封面做修改。
-  Require 用户请求制作或修改封面图本身；只评分析、只要标题建议 = 纯文本任务不触发生图。
-  Trigger on: 封面、缩略图、thumbnail、视频封面、频道封面、封面图设计、给视频配封面。
-  v0.1 范围边界：无人像封面（产品/静物/图形/景观类框架）已支持；
-  出镜人物封面需人脸参考图锁定（链路同商品图编辑，未验证，首次先告知）。
-  Exclude 普通配图（无封面意图）、视频本体、视频内插卡。
+description: Create or edit a video/content thumbnail in landscape, portrait or square format. Use when the user requests an actual cover image. Analysis and title suggestions do not trigger generation. Existing tests cover limited concepts; portrait identity and general quality remain unverified.
 ---
 
-# 封面图（Thumbnail / Cover）· v0.2
+# Thumbnail / Cover
 
-对标：Higgsfield thumbnail-generation（423 行+2 refs，2026-10 读毕）。本页 = 骨架引用 + 封面差异增量。
-工艺来源：其 16 框架/信息差原则/房屋结构/文字政策/120px 可读性测试已蒸馏进本页与 references。
+**Validation:** earlier real image comparisons exist, with limited concept coverage and remaining factual-review and independent-review gaps. Do not label the complete workflow quality-approved. This English revision has not undergone a new Agent execution test.
 
-## 执行前必读
+Read `../shared/core-skeleton.md`, `references/dialect-gpt-image-2.json` and `references/thumbnail-craft.md` before execution.
 
-骨架（缺行检查/确认门禁/QC/降级交付）见 `../shared/core-skeleton.md`（唯一表述）；方言见 references/dialect-gpt-image-2.json（以实时 estimate 为准）。封面专属工艺：本页 + `references/thumbnail-craft.md`（16 框架表 + 11 块提示词结构 + 情绪/机位档）。冲突时以骨架为准。
+## Thumbnail-specific rules
 
-## 与商品图页的三处关键差异
+- Default to a clean text-free render and a deterministic text overlay afterward. A requested title is not permission to render its lettering inside the generated image. Use in-image text only when explicitly requested; specify exact text and typography.
+- Develop at least three concepts using the framework reference. The image opens a question that the title/video answers. Exaggeration must not misrepresent the actual content.
+- Deliver the concept candidates, framework numbers, selection and rejection reasons. For abstract mechanisms, use elements from the real topic's scene. Do not default to body organs or purple/cyan neon metaphors.
+- At approximately 120 pixels wide, the subject and intended emotion should remain legible. If visual inspection is unavailable, mark this check unperformed.
 
-1. **文字政策（替代骨架"无文字"默认）**：默认=干净无字渲染 + 交付后确定性叠字（ffmpeg/PIL，零 credits、永远清晰、可改字）。仅当用户**显式**要求文字进图才用 TEXT 块烧字（方言表 text_rendering）。用户提到标题文字 ≠ 授权烧字；不确定→无字渲染+叠字交付。
-2. **概念层前置（先答"画什么"再答"怎么画"）**：动笔前按 references/thumbnail-craft.md 的 16 框架**脑暴 ≥3 个概念**（每个必须打开信息差——图 raises 问题、标题/视频给答案），选最强者进入提示词装配；诚实律：图可以夸张但不得歪曲视频内容。**候选留痕（2026-10-03 实证补）**：交付必须附候选概念表（≥3 候选 + 框架号 + 一句淘汰理由），未附=交付不完整。**抽象主题隐喻门禁（2026-10-03 睁眼封面 + HF 紫青大脑双实证补）**：主题为抽象机制（清醒/降噪/快充等）时，视觉隐喻必须取自主题真实场景中的元素（如深夜台灯/闹钟/书桌），**禁止把抽象词直接画成身体器官或生物符号**（眼睛/大脑等），禁止紫青霓虹发光体。
-3. **可读性门禁（像素级 QC 的封面版）**：成品必须在 **~120px 宽**下仍能读出主体与情绪（缩略栏场景）。无视觉能力时写进交付声明请用户核对。
+## Workflow
 
-## 流程（骨架流程的封面实例化）
-
-1. **触发检查**：制作/修改封面的请求才走本页；纯点评/标题建议→文本回复，不生图。
-2. **缺行检查**（骨架查表）：内容决策=主题/比例（默认 16:9）/是否要字/单张还是变体组。变体纪律：默认 1 张；用户要变体=情绪×机位组合（档位见 thumbnail-craft），**上限 16**，每变体独立提交禁 count:N。
-3. **人像门禁**：概念含人物且无人脸参考图 → 停下问一次（用户提供人脸照片锁定 / 生成假人 / 无人）；v0.1 无人脸锁定验证前，选择"生成假人/无人"时在交付披露"人物一致性未经验证"。
-4. **概念脑暴**：≥3 概念过信息差检验 → 按择强判据选强（含视角尺度门禁：默认人眼尺度，教学视角需点名）→ **草稿验概念**（无人值守：先出 1K/low 草稿，宿主有视觉则外行测试自检，不过换概念最多 2 轮；交互：概念+草稿给用户挑）→ 通过才升成片档位 → 装配 11 块结构（thumbnail-craft）。
-5. **生成 → QC → 交付**：按骨架；QC 追加 120px 测试；交付附概念名、框架号、叠字文件（如有）。
-6. **改图循环**：小改动用编辑链路（i2i，"其余像素保持不变"式提示词），每轮重申不变项。
-
-## 降级交付
-
-骨架表执行，页面无额外规则。烧字失败 → 交付无字版+叠字脚本，不冒充成品。
+1. Confirm that image creation or editing is requested. For review or title advice, respond in text without a generation call.
+2. Resolve topic, aspect ratio, text policy and number of variants. Defaults: landscape 16:9 and one image. If variants are requested, use emotion/camera combinations, at most 16, submitted individually rather than as an opaque count batch.
+3. If a concept contains a person without an identity reference, clarify once whether the user will supply a reference, accepts a synthetic person or prefers no person. Disclose that portrait identity has not been validated.
+4. Develop at least three concepts and select using legibility, recognizable subject, topic-specific emotional contrast and curiosity gap. Default to eye-level scale; internal/cutaway/educational views require an explicit brief.
+5. Where authorized, generate a low-cost draft using currently supported parameters. Inspect whether a viewer can recognize the subject and the question. For unattended execution, allow at most two concept drafts within the authorized budget; for interactive execution, show the concept and draft for selection. Do not assume that an estimate authorizes extra drafts.
+6. Assemble the eleven prompt blocks in the craft reference. Follow the shared estimate/authorization/submit/poll/result/QC workflow. Add the 120-pixel check and any deterministic overlay.
+7. For small edits, use the previous output as reference and change one target at a time. Restate what must remain unchanged; verify the output rather than treating "pixel-faithful" wording as a guarantee.
+8. Deliver the chosen concept, framework, candidates, final prompt, output, overlay file if applicable, costs and limitations. Save a preliminary deliverable before post-processing. If text processing fails, provide the clean render and script with its unfinished status.

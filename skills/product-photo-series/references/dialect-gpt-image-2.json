@@ -1,44 +1,44 @@
 {
   "$schema": "fish-dialect-table/v1.1",
   "model_id": "gpt-image-2",
-  "family": "OpenAI gpt-image（经 Fish MCP）",
+  "family": "OpenAI gpt-image through Fish MCP",
   "source": {
-    "basis": "openai/skills skills/.system/imagegen 官方 references + fish-prod 实测记录",
+    "basis": "Historical official image-generation references and local Fish tests",
     "cleaned_date": "2026-09-25",
-    "confidence": "high（官方源+实测）"
+    "confidence": "Historical prompt observations; not a current model-capability guarantee"
   },
   "verification_log": {
-    "note": "本表不保存'已验证'状态。时效以记录为准：模型升级、价格调整或超过 90 天未复验时，表中工艺规则需重验；重验方式=同场景 A/B 对照（见 evals/README）。",
+    "note": "This table is prompt knowledge, not a validated status. Re-evaluate when models change or observations become stale.",
     "last_tested_at": "2026-09-25",
-    "trigger": "模型版本变更 / 服务端调价 / 90 天"
+    "trigger": "Model change, pricing change or 90 days without evaluation"
   },
-  "dynamic_facts_policy": "价格（credits）、可用参数枚举、分辨率档位等动态事实**不在本表保存**——以实时 estimate_*/get_media_model 返回为唯一来源；本表只保存 prompt 方言知识。",
+  "dynamic_facts_policy": "Discover current prices, parameters and resolutions using get_media_model and estimate tools; do not store them here.",
   "prompt_dialect": {
-    "structure_formula": "scene/backdrop → subject → key details → constraints → output intent（官方结构顺序）",
+    "structure_formula": "Scene/backdrop \u2192 subject \u2192 key details \u2192 constraints \u2192 output intent",
     "labeled_lines": "Use case / Scene / Subject / Style / Composition / Lighting / Materials / Text(verbatim) / Constraints / Avoid",
-    "photoreal_rule": "像真实瞬间被镜头捕捉那样写——摄影语言（镜头/光线/构图）、真实质感、避免过度打磨的抛光感",
-    "product_mockup_recipe": "干净轮廓；studio 渐变背景、softbox 柔光、受控阴影、居中或 3/4 角、充足留白、微妙倒影",
-    "specificity_policy": "prompt 已具体→只结构化不加料；笼统→可有品位地补摄影细节；两种情况都禁止未隐含的物体/人物/品牌（增料禁令）",
-    "negative_handling": "支持负向表述：Constraints（必须保持）+ Avoid（必须避免）为固定行",
-    "identity_handling": "编辑模式：产品身份由 input 参考图锁定，正文写'与参考图完全一致'，不重述外观细节",
-    "iteration_rule": "干净基底起步，一次改一个目标点，每轮重述关键约束（防漂移）",
-    "text_rendering": "引号内逐字渲染并指定排印；商品图默认禁文字则不需要"
+    "photoreal_rule": "Concrete photographic framing, light and real material texture; avoid excessive polish",
+    "product_mockup_recipe": "Clean outline, neutral studio gradient, softbox, controlled shadows, centered or three-quarter framing, whitespace and subtle reflection",
+    "specificity_policy": "Structure a specific brief without adding unsupported objects, people or brands; resolve generic photographic detail when needed",
+    "negative_handling": "Use Constraints for requirements and Avoid for unwanted elements",
+    "identity_handling": "Use reference-image edit; say exactly the same product as in the reference; verify actual identity rather than assuming a guarantee",
+    "iteration_rule": "Start from a clean base, change one target, restate invariants",
+    "text_rendering": "Exact quoted text and typography only when explicitly requested"
   },
   "constraints_render": {
-    "_note": "只做翻译，不改定义。约束定义唯一定义于 core-skeleton.md 硬约束节。",
-    "无文字": "Constraints: no text anywhere in the image / Avoid: any text, lettering, logos, watermarks",
-    "唯一容器": "Constraints: the product is the only cup/bottle/vessel in the frame / Avoid: any additional cups, mugs, bottles, or containers",
-    "无热气": "Avoid: any steam or vapor around the product",
-    "盖子状态": "Constraints: lid shown closed / open exactly as in the reference"
+    "_note": "Translate selected shared/category rules without redefining them",
+    "no_text": "Constraints: no text anywhere in the image / Avoid: text, lettering, logos, watermarks",
+    "only_container": "Constraints: the product is the only cup/bottle/vessel in frame / Avoid: additional containers",
+    "no_steam": "Avoid: steam or vapor around the product",
+    "lid_state": "Constraints: lid shown closed / open exactly as in the reference"
   },
   "lighting_vocabulary": {
-    "商业棚拍": "softbox lighting, clean highlights, controlled shadows, studio gradient backdrop",
-    "自然晨光": "soft morning window light, gentle shadows, natural color balance",
-    "禁忌": "不写 dramatic lighting 类抽象词——写具体光源（官方规则：真实光源=真实效果）"
+    "studio": "softbox lighting, clean highlights, controlled shadows, studio gradient backdrop",
+    "morning": "soft window light, gentle shadows, natural color balance",
+    "avoid": "Vague dramatic-lighting instructions without a concrete source"
   },
   "pitfalls": [
-    "增料是头号风险：不写 Avoid 行时模型倾向添加饮品陪衬（三轮盲评实证）",
-    "产品身份不写细节时各次生成形态各异——商品场景必须走参考图编辑",
-    "过度风格化堆砌词（hyper-realistic 8K masterpiece 类）与官方'真实瞬间'原则相反"
+    "Unrequested props can be added unless constraints are explicit",
+    "Product identity needs reference-guided editing and output inspection",
+    "Hyper-realistic/8K/masterpiece wording can encourage overpolished imagery"
   ]
 }

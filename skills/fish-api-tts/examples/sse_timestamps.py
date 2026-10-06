@@ -1,6 +1,4 @@
-"""流式合成 + 字/词级时间戳（SSE）。
-用法: python sse_timestamps.py "文本" [reference_id]
-产出: out.mp3（音频）和 timings.json（每个字/词的绝对起止时间，秒）。"""
+"""SSE TTS with timestamps. Usage: python sse_timestamps.py "text" [reference_id]. Outputs out.mp3 and timings.json; times are seconds."""
 import base64
 import json
 import os
@@ -15,7 +13,7 @@ if reference_id:
     body["reference_id"] = reference_id
 
 audio = bytearray()
-# chunk_seq -> (chunk_audio_offset_sec, segments)。同一 chunk 的 alignment 是累计快照：后到的覆盖先到的，不要追加
+# chunk_seq -> (chunk_audio_offset_sec, segments)。Alignment is cumulative per chunk: replace the previous snapshot, do not append
 snapshots = {}
 
 with requests.post(
@@ -31,7 +29,7 @@ with requests.post(
 ) as r:
     if r.status_code != 200:
         sys.exit(f"HTTP {r.status_code}: {r.text[:300]}")
-    r.encoding = "utf-8"  # requests 对 text/event-stream 默认按 ISO-8859-1 解码，中文会乱码
+    r.encoding = "utf-8"  # Decode SSE as UTF-8 rather than requests default ISO-8859-1
     for line in r.iter_lines(decode_unicode=True):
         if not line or not line.startswith("data:"):
             continue
@@ -61,4 +59,4 @@ with open("out.mp3", "wb") as f:
     f.write(audio)
 with open("timings.json", "w", encoding="utf-8") as f:
     json.dump(timings, f, ensure_ascii=False, indent=1)
-print(f"OK 音频 {len(audio)} 字节，{len(timings)} 个字/词时间戳 -> out.mp3 / timings.json")
+print(f"OK audio {len(audio)} bytes，{len(timings)} character/word timings -> out.mp3 / timings.json")

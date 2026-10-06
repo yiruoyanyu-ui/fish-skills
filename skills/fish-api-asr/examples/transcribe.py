@@ -1,7 +1,4 @@
-"""语音转文字（REST ASR），带逐字/词时间戳与说话人分段。
-用法: python transcribe.py audio.mp3 [language] [model]
-  model 默认 transcribe-1-pro（推荐；头缺失会静默按 transcribe-1 处理，长音频会 503）。
-注意 ignore_timestamps 默认是 true（segments 为空数组），要时间戳必须显式传 false。"""
+"""REST transcription with timestamps and speaker turns. Usage: python transcribe.py audio.mp3 [language] [model]. Send ignore_timestamps=false; select the model in the HTTP header."""
 import json
 import os
 import sys
@@ -21,15 +18,15 @@ with open(path, "rb") as f:
         headers={"Authorization": f"Bearer {os.environ['FISH_API_KEY']}", "model": model},
         files={"audio": f},
         data=form,
-        timeout=900,  # 长音频 pro 可能要几分钟
+        timeout=900,  # Long audio may take several minutes
     )
 if r.status_code != 200:
     sys.exit(f"HTTP {r.status_code}: {r.text[:300]}")
 result = r.json()
 if not result.get("segments"):
-    sys.exit("segments 为空：确认 ignore_timestamps=false，且音频里确有人声")
-print(f"OK 模型 {model}，时长 {result['duration']:.2f}s，语言 {result.get('language_code')}，"
-      f"{len(result['segments'])} 段，{len(result.get('speaker_turns', []))} 个说话人分段")
+    sys.exit("Empty segments: check ignore_timestamps=false and that audio contains speech")
+print(f"OK model {model}, duration  {result['duration']:.2f}s, language  {result.get('language_code')}，"
+      f"{len(result['segments'])} segments, {len(result.get('speaker_turns', []))} speaker turns")
 print(result["text"])
 for t in result.get("speaker_turns", []):
     print(f"  {t['speaker']} [{t['start']:.2f}-{t['end']:.2f}] {t['text']}")

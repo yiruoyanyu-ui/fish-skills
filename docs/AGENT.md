@@ -1,58 +1,34 @@
-# Agent 安装与 Fish 平台集成
+# Agent Connection and Platform Integration
 
-## 先连接两个入口
+## Two responsibilities
 
-- **Fish Skills MCP**：本仓库实现，只读查询和获取 Skill 内容。
-- **Fish Audio MCP**：现有媒体执行入口，继续用原有账号授权。
+This repository provides a read-only stdio **Fish Skills MCP**. A separately authorized **Fish Audio MCP** executes media. The five API guides instead use REST examples and the API wallet. Reading a document is not running a generation pipeline.
 
-它们配合完成流程；无需把全部 Skill 本地安装后才能读取。当前是可运行的 stdio 分发服务，尚不是部署到 Fish 官方 MCP 的新增工具。
+See [quickstart](COLLEAGUE_QUICKSTART.md) for a ready-to-edit configuration.
 
-## 本地读取模式
+## Backends
 
-在仓库执行 `uv sync --locked`、build、publish 到 `.store` 后运行：
+- **GitHub:** set FISH_SKILLS_BACKEND=github, FISH_SKILLS_GITHUB_REPOSITORY=yiruoyanyu-ui/fish-skills and FISH_SKILLS_CHANNEL=preview. Public reads can be anonymous. Private repositories require an authorized local gh login or FISH_SKILLS_GITHUB_TOKEN. Download redirects strip GitHub authorization when the host changes.
+- **R2:** set FISH_SKILLS_BACKEND=r2 and configure R2_ACCOUNT_ID, R2_BUCKET, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY. Use a read-only bucket credential, not the publisher's write credential. FISH_SKILLS_PREFIX defaults fish-skills. No public bucket domain is required.
+- **Local files:** build/publish to the default `.store/`, then run the stdio server. This is not an R2 upload.
 
 ```bash
+uv sync --locked
+uv run --locked fish-skills build
+uv run --locked fish-skills publish dist/fish-skills-0.1.0-preview.3.zip --activate
 uv run --locked fish-skills-mcp
 ```
 
-它在 stdio 等待 MCP 客户端请求，不会在终端主动输出文档。
+The stdio server waits for client requests. It does not print documents interactively. Building requires committed Skill/config/review content.
 
-## GitHub Release 读取模式
+## Task version and cache
 
-设置 `FISH_SKILLS_BACKEND=github`、`FISH_SKILLS_GITHUB_REPOSITORY=yiruoyanyu-ui/fish-skills`、`FISH_SKILLS_CHANNEL=preview`。公开仓库可匿名读取，无需 R2 凭证。私有仓库需本机 gh 已登录，或在服务环境设置只读 `FISH_SKILLS_GITHUB_TOKEN`。实现不会把令牌写进下载 URL；跨域下载跳转不会携带 GitHub Authorization。
+Fetch the main instructions, retain the returned version, and use it for every reference read. The channel pointer caches for 60 seconds. Cached fixed content does not change when the channel advances. Corrupt/missing/unavailable content returns an error; the service does not silently substitute a different version.
 
-MCP 客户端配置示例（替换目录；客户端字段格式以实际配置为准）：
+Experimental status is a distribution label; consult the per-Skill evidence scope. It must not be interpreted as either "never tested" or "fully quality accepted".
 
-```json
-{
-  "mcpServers": {
-    "fish-skills": {
-      "command": "uv",
-      "args": ["--directory", "/absolute/path/to/fish-skills", "run", "--locked", "fish-skills-mcp"],
-      "env": {
-        "FISH_SKILLS_BACKEND": "github",
-        "FISH_SKILLS_GITHUB_REPOSITORY": "yiruoyanyu-ui/fish-skills",
-        "FISH_SKILLS_CHANNEL": "preview"
-      }
-    }
-  }
-}
-```
+## Fish API integration state
 
-这是可填写的示例，不会由脚本自动覆盖现有客户端配置。连接后可让 Agent 执行：
+A separate platform-api development branch has implemented equivalent HTTP tools and passed local OAuth/R2 retrieval and one thermos execution chain. That branch is not deployed by publishing this repository. Existing online Fish connections are not guaranteed to expose these tools.
 
-> 查询 Fish Skills 目录，获取 product-photo-series 和同版本共享骨架及参考文件；说明执行步骤。先不生成媒体。
-
-内容调用不产生 Fish 媒体 credits；GitHub、R2、运行环境本身是否产生费用取决于所用服务，不宣称零成本。
-
-## R2 读取模式
-
-设置 `FISH_SKILLS_BACKEND=r2`，再配置 R2_ACCOUNT_ID、R2_BUCKET、R2_ACCESS_KEY_ID、R2_SECRET_ACCESS_KEY；给 MCP **只读** bucket token，不能复用 CI 写入 token。FISH_SKILLS_PREFIX 默认 fish-skills。
-
-客户端得到实际 version 后，每次 reference / 路由读取都传同一版本。最新频道指针缓存最多 60 秒，固定正文按版本缓存。存储不可用或校验失败时明确报错，不静默换内容；已缓存的固定版本仍可被该进程读取。
-
-## 以后并入 Fish 官方 MCP
-
-核心 `fish_skills.reader.SkillReader` 不依赖 FastMCP，三个方法返回普通 dict。platform-api 可以复用 reader，注册同名职责的 tools，并使用服务环境的只读存储配置。异步路由中通过 asyncio.to_thread 或项目的异步存储封装调用，避免阻塞。
-
-需要另外完成平台仓库的工具 catalog/handler 注册、初始化路由说明、权限策略、客户端发现与部署验收。该工作不应伪装成“只把仓库 push 后官方 MCP 就有工具”；本版没有修改或发布 platform-api。
+The reader returns ordinary dictionaries; an async platform handler must use an async storage adapter or a thread wrapper for blocking reads. Registration, account permissions, initialization, production bucket authorization and deployment require their own acceptance. Preserve Asset and Skill registrations when integrating both features.

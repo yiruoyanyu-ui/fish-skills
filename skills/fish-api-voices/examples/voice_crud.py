@@ -1,6 +1,4 @@
-"""音色全流程：创建私有音色 → 查询 → 删除（再查应 404）。
-用法: python voice_crud.py sample.mp3 [标题]
-样本建议 10 秒左右的清晰人声；创建后 state 立刻为 trained（train_mode=fast）。"""
+"""Create, inspect and delete a private test voice. Usage: python voice_crud.py authorized_sample.mp3 [title]. Only delete the voice created by this sample."""
 import os
 import sys
 
@@ -20,7 +18,7 @@ with open(sample, "rb") as f:
         timeout=180,
     )
 if r.status_code != 201:
-    sys.exit(f"创建失败 HTTP {r.status_code}: {r.text[:300]}")
+    sys.exit(f"Creation failed HTTP {r.status_code}: {r.text[:300]}")
 voice_id = r.json()["_id"]
 print("created", voice_id, r.json().get("state"))
 try:
@@ -33,4 +31,4 @@ finally:
 assert d.status_code == 204, d.status_code
 g2 = requests.get(f"{BASE}/model/{voice_id}", headers=HEADERS, timeout=30)
 assert g2.status_code == 404, g2.status_code
-print("deleted; 再查 404")
+print("deleted; subsequent lookup returned 404")

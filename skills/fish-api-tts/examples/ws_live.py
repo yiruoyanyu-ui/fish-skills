@@ -1,6 +1,4 @@
-"""实时 TTS（WebSocket，MessagePack 帧）。需要 pip install websockets msgpack。
-用法: python ws_live.py "片段1" "片段2" ... [--ref REFERENCE_ID]
-产出: ws_out.mp3 和 ws_timings.json（绝对时间，秒）。"""
+"""Live TTS with MessagePack WebSocket frames. Requires websockets and msgpack. Usage: python ws_live.py "part1" "part2" [--ref ID]. Outputs ws_out.mp3 and ws_timings.json."""
 import argparse
 import asyncio
 import json
@@ -46,7 +44,7 @@ async def main():
             kind = event.get("event")
             if kind == "audio":
                 audio.extend(event.get("audio") or b"")
-                if event.get("alignment"):  # null 表示该 chunk 暂无变化
+                if event.get("alignment"):  # null means no new snapshot for this chunk
                     snapshots[event["chunk_seq"]] = (
                         event["chunk_audio_offset_sec"],
                         event["alignment"]["segments"],
@@ -57,7 +55,7 @@ async def main():
             elif kind == "error":
                 sys.exit(f"error: {event}")
     if not finish or finish.get("reason") != "stop":
-        sys.exit(f"异常结束: {finish}")
+        sys.exit(f"Unexpected finish: {finish}")
     timings = [
         {"text": s["text"], "start": round(off + s["start"], 3), "end": round(off + s["end"], 3)}
         for _, (off, segs) in sorted(snapshots.items())
@@ -67,7 +65,7 @@ async def main():
         f.write(audio)
     with open("ws_timings.json", "w", encoding="utf-8") as f:
         json.dump(timings, f, ensure_ascii=False, indent=1)
-    print(f"OK 音频 {len(audio)} 字节，{len(timings)} 个字/词时间戳 -> ws_out.mp3 / ws_timings.json")
+    print(f"OK audio {len(audio)} bytes，{len(timings)} character/word timings -> ws_out.mp3 / ws_timings.json")
 
 
 asyncio.run(main())

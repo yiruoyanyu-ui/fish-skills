@@ -1,69 +1,45 @@
 ---
 name: ugc-product-video
-description: |
-  商品主角+画外音的带货短视频（无人出镜；人物只允许手/局部/POV 且非主角）。
-  Trigger on: 商品视频、带货视频、产品短视频、UGC 商品视频、给商品拍个视频。
-  Require：真实商品参考图 + 时长（缺→一次性打包问，给 10/15/30/45s 选项）。
-  Exclude：无旁白的纯视频（直接走普通视频生成）、出镜讲解/开箱/教程/试穿
-  （人物一致性未验证）、剪辑已有视频。
+description: Make a product-led short promotional video with voice-over from a real product reference and a specified duration. The evaluated scope is a faceless product video, not presenter reviews, unboxing, tutorials or try-on. Do not use to edit an existing video.
 ---
 
-# UGC 商品视频 · v0.2（Fish 全链实测 2026-10-04）
+# UGC Product Video
 
-对标：Higgsfield ugc-product-video 工作流（MCP 内置 v1.0）。核心蒸馏：Board 架构 + VO 字数预算 + 产品 intake。
-v0.2 变更（2026-10-04 实测驱动）：机制更正——**分镜板是"多参考图"不是"首帧"**；引擎表重写（HF "2.0 fast 25cr" 档已从目录消失）；装配标准化（真实切点检测+atempo）；de-slop 条件化；新增已验证带货女声。
+**Validation:** the legacy record reports one complete Fish 10-second product-video run on 2026-10-04. It does not validate all durations, product categories, presenters or all six HF UGC formats. Original runtime evidence is not packaged in this release; see the validation inventory. This English revision has not undergone a new Agent execution test.
 
-## 平台选择（先于一切生成，交付时披露）
+Read `../shared/core-skeleton.md`. This recipe adapts storyboard, voice-over budgeting and product intake concepts. It does not install HF cloud scripts or run an autonomous backend workflow.
 
-- 任务预算以 **Fish credits 计 → Fish 全链**（板/视频/配音全走 fish-prod，本页默认验证线）
-- 预算以 HF credits 计或任务点名 HF → HF 臂（板+视频走 higgsfield 工具）
-- 两者皆无 → 按"确认门禁"访谈一次定平台
+## Execution platform and discovery
 
-## 引擎档位表（2026-10-04 单条 10s 实测；提交前仍以实时 estimate 为准）
+Use Fish execution tools when the task authorizes Fish credits. Use HF only if the user explicitly requests it and that connection is available; disclose the platform. If ambiguous, clarify once. Discover current models, reference roles, supported duration/resolution/audio parameters and prices before submission. Legacy observations are not current quotes.
 
-| 臂 | 工具链 | 实测价 |
+The historical Fish path used a gpt-image-2 storyboard, a reference-video mode and separate TTS, followed by local assembly. Do not assume model IDs or a reference-video mode are currently available. A model that only accepts a start frame cannot execute the multi-reference storyboard recipe.
+
+## Workflow
+
+1. Gather a real product photo and duration, preferably together. Offer 10/15/30/45 seconds when a choice is needed. Do not invent or substitute a reference. Set technical defaults from current tool capabilities rather than interviewing the user about model internals.
+2. Write a canonical product description: visible mechanism, proportions relative to hands, visible faces, unknown features and treatment of promotional text/watermarks. Reuse it consistently. Avoid artificial perfection, but do not invent damage or redesign the product.
+3. Write a segmented voice-over. The historical Chinese 10-second case used approximately 20–32 characters; other languages need their own measured timing. Use visible details and supplied facts, never fabricated specifications.
+4. Create a four-panel storyboard in a 21:9 canvas with four vertical slots, if supported. Use the cleaned product reference. Plan reveal, demonstration A, demonstration B and outcome. Specify visible product angles, realistic scale, shot labels and concrete hand actions; prohibit extra hands, text and watermarks. Inspect equal panels, seams and missing placeholders. One regeneration is allowed only within user authorization; otherwise disclose a fallback.
+5. Optional visual cleanup: skip and disclose when the board is only a reference and passes inspection. If used directly or visibly artificial, perform a targeted edit. Historical guidance allowed at most two edits; this is a limit, not automatic spending permission.
+6. Generate video using the storyboard and clean product as **references**, not as the start frame. Write explicit shot windows, framing, action and hard cuts. Feeding a whole board as the starting frame can leave the board visible in the resulting video.
+7. Generate separate voice-over segments using an available voice suited to the brief. Legacy voice IDs are not portable defaults; query or validate the current catalog. Disclose any substituted voice.
+8. Detect actual scene cuts with ffmpeg rather than trusting planned windows. Align each voice segment with `adelay`; if it exceeds the shot window, use `atempo` up to 1.3 rather than truncating speech. Mix with `amix` and normalize=0; aim for no more than one second of trailing silence. If fitting needs a greater speed change, deliver video and narration separately.
+9. Inspect extracted frames for shot structure, product consistency, text/watermarks and hands. Check cut count and duration within approximately 0.3 seconds of the selected target. Report listening review separately; user confirmation of voice quality is not implied by a successful tool response. Do not enter repeated environment-installation attempts merely to manufacture a QC result.
+10. Save a preliminary delivery record before assembly. Final delivery includes media URLs/files, prompts, original task IDs, actual costs, platform, cut timings, speed adjustments, voice selection and any unfinished processing.
+
+## Historical duration planning
+
+| Duration | Boards | Planned segments |
 |---|---|---|
-| **Fish 全链（默认）** | fish gpt-image-2 板（21:9/2K/medium，edit）+ fish seedance-2.0-mini i2v_ref（9:16/720p）+ fish TTS | 板 1,820 + 视频 14,000 + TTS≈170 ≈ **16,000 Fish cr** |
-| HF 臂（便宜） | HF gpt_image_2 板 + seedance_2_5 omni_reference（generate_audio 可 true=原生旁白） | ≈ **79 HF cr** |
-| 降级（无 board） | fish seedance-2.0 i2v 单起始帧慢镜（44,400，单镜无剪） | 最后保底 |
+| 4–15 seconds | 1 | Full length |
+| 16–19 seconds | 2 | Balanced segments, each at least 4 seconds |
+| 20–30 seconds | 2 | 15 seconds plus remainder |
+| 31–45 seconds | 3 | 15, 15, remainder |
+| 46–60 seconds | 4 | Approximately 15 each |
 
-已消失/不可用档位勿引用：HF "Seedance 2.0 fast 25cr"（2026-10-03 目录实测无）；fish seedance-1-5-pro 无 i2v_ref，做不了板管线。
+Only the single 10-second case is reported as tested. The table is planning guidance, not verified engine support.
 
-## 流程（骨架的成片实例化）
+## Recovery
 
-1. **Intake（一次打包问）**：商品参考图（必须真实，禁编造禁替换）+ 时长（10/15/30/45 选项）。型号/比例/分辨率/音频永不问。
-2. **产品规范化**：写 canonical 描述——外观机制、手持相对尺度、可见面、缺失特征、标签处理（参考图自带的营销文字/水印不是产品的一部分）、**一处不完美**（防 AI 过度完美）。全流程逐字复用。
-3. **旁白脚本**：≤10s 用 20-32 个中文字，按板数分段；只写感官/机制细节，卖点只取参考图自带信息+可见结构，禁编造参数、禁 AI 腔。
-4. **Board 生成**：每板一张 **21:9 四格竖槽故事板**（叙事弧：亮相→演示A→演示B→效果），**商品清洗图作编辑参考输入**；prompt 必含：角度锁（只露参考图可见面）/手部纪律（POV 占一手、禁第三只手）/每格景别标签（如 MEDIUM-WIDE→MEDIUM POV→MACRO→THREE-QUARTER）/真实尺度/禁一切文字水印。产出后目检格子结构（四等分、白缝、无占位格）：不过→重出一次，再不过→按降级交付。
-5. **De-slop（条件项）**：板仅作参考图且目检无明显 AI 感 → **跳过并披露**（省一次编辑费）；板要直出或 AI 感明显 → 过一次 generate_image_edit（最多 2 次），不过修不许进视频。
-6. **生成视频**：**板=参考图（i2v_ref / omni_reference），不是起始帧**——inputs=[分镜板, 商品清洗图]，9:16 / 720p / 按时长档。prompt 按"Cut N（时间窗）—景别—动作—Hard cut to"逐镜写明。**禁止把板当 startFrame**（会输出整张板躺画面里，2026-10-04 定为页面红线）。
-7. **旁白分轨与装配（本地，标准做法）**：
-   a. TTS 逐段生成（音色见音色表）；
-   b. `ffmpeg scene detection` 找成片**真实切点**（不信任计划时间窗）；
-   c. 每段配音 `adelay` 到对应切点；段长超镜头窗 → `atempo` 压回（≤1.3 无感），禁止硬截断；
-   d. `amix`（normalize=0）合成，成片尾部留白 ≤1s。
-8. **QC**：抽帧 Read 目检（四镜结构/产品一致/无文字水印/手部合规；无头会话直接 Read 帧图，失败则 ffmpeg 抽帧重试一次；**禁止安装 OCR 库、禁止探测 pip 环境、禁止自造验证工具**——该方法探空循环曾耗尽 61 轮）+ 切点数=板数核验 + 时长 ±0.3s + **听审=用户**。
-9. **交付**：按骨架**先写交付文件**（含各素材 URL 与加工状态），披露平台臂、真实切点表、atempo 使用、音色替定。
-
-## 音色表（已验证）
-
-| 音色 | id | 适用 |
-|---|---|---|
-| 王琨（男，播音） | `4f201abba2574feeae11e5ebf737859e` | 旁白/解说默认 |
-| 工商旅游005女（女，带货感） | `a616236f5e874bcd84fceae68410680f` | **UGC 带货默认**（2026-10-04 实测） |
-
-无人值守未点名音色：UGC 带货→工商旅游005女，其余→王琨；交付披露"音色为替定"。
-
-## 时长-板数对照（对标原表）
-
-| 总时长 | 板数 | 片段时长 |
-|---|---|---|
-| 4-15s | 1 | 全长 |
-| 16-19s | 2 | 各≥4s 平衡 |
-| 20-30s | 2 | 15 + 余量 |
-| 31-45s | 3 | 15,15,余量 |
-| 46-60s | 4 | 15×3+余量 |
-
-## 降级交付
-
-按骨架；追加：Board 两次目检仍不合规 → 单格放大出单镜并声明"单镜版"；视频生成失败 → 查原 ID，不重提；旁白超窗且 atempo 需 >1.3 → 交付"画面版+旁白版"两文件并说明；原生音频臂（HF generate_audio）出片后**音色/台词不可改**，改词=整条重生成，需用户确认才选此臂。
+Poll the original task when generation is slow or uncertain; do not create a second paid submission. If two authorized storyboard attempts fail inspection, offer a disclosed single-shot fallback. With native generated audio, a changed script may require full regeneration: explain the new operation and obtain applicable authorization before spending.

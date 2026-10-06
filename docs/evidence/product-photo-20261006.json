@@ -1,0 +1,79 @@
+{
+  "skill_id": "product-photo-series",
+  "version": "0.1.0-preview.2",
+  "billing_scope": "local copied test-account ledger; online wallet and upstream dollar invoice not verified",
+  "net_credits": 5040,
+  "completed": true,
+  "tested_at": "2026-10-06",
+  "english_revision_tested": false,
+  "jobs": {
+    "clean-reference": {
+      "generation_id": "c2e53e5abae4464f9a68d75c5dd998e6",
+      "status": "succeeded",
+      "billing": {
+        "credits_charged": 1260,
+        "credits_refunded": 0,
+        "net_credits": 1260,
+        "refund_pending": false
+      },
+      "image": {
+        "width": 1024,
+        "height": 1024,
+        "format": "PNG",
+        "bytes": 888784,
+        "sha256": "9443d010689341c5a235672a4cadac9e3f87ed2c169b0377ce43f9ccf269e3f2"
+      }
+    },
+    "studio": {
+      "generation_id": "97be1d50673a49dc9952f3d242a63141",
+      "status": "succeeded",
+      "billing": {
+        "credits_charged": 1260,
+        "credits_refunded": 0,
+        "net_credits": 1260,
+        "refund_pending": false
+      },
+      "image": {
+        "width": 1024,
+        "height": 1024,
+        "format": "PNG",
+        "bytes": 1171945,
+        "sha256": "efaeaa62deaf2273fd7cfcb9b283c8a8696f8e199da0d8308c45374ed050fd10"
+      }
+    },
+    "desk": {
+      "generation_id": "b1a5e3f7136f49acabdb680d460bf3f9",
+      "status": "succeeded",
+      "billing": {
+        "credits_charged": 1260,
+        "credits_refunded": 0,
+        "net_credits": 1260,
+        "refund_pending": false
+      },
+      "image": {
+        "width": 1024,
+        "height": 1024,
+        "format": "PNG",
+        "bytes": 1126497,
+        "sha256": "86aadbaa8667a06168d1de084d71aa6b672e4c80472cfdcaf5bb57802fe6f1c6"
+      }
+    },
+    "detail": {
+      "generation_id": "33b2584cf1584f4b90ebcf2136e30db1",
+      "status": "succeeded",
+      "billing": {
+        "credits_charged": 1260,
+        "credits_refunded": 0,
+        "net_credits": 1260,
+        "refund_pending": false
+      },
+      "image": {
+        "width": 1024,
+        "height": 1024,
+        "format": "PNG",
+        "bytes": 1271881,
+        "sha256": "abecf9ccbba4c8f4160ddb32f6452a8bd9b9dfeae9cdab707e967fb9c71932e6"
+      }
+    }
+  }
+}

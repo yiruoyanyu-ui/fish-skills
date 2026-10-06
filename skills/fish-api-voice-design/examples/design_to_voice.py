@@ -1,6 +1,4 @@
-"""声音设计 → 持久化为可复用音色 → 用它合成 → 删除（演示完整闭环）。
-持久化走公开 POST /model：把候选 WAV 当作 voices 样本上传。
-用法: python design_to_voice.py "音色描述" "参考文本(<=150字，念满 8 秒以上更稳)" [--keep]"""
+"""Design, persist, synthesize and clean up a test voice. Usage: python design_to_voice.py "description" "audition text" [--keep]. Persistence uses the public POST /model endpoint."""
 import base64
 import os
 import sys
@@ -19,12 +17,12 @@ r = requests.post(
     timeout=180,
 )
 if r.status_code != 200:
-    sys.exit(f"设计失败 HTTP {r.status_code}: {r.text[:300]}")
+    sys.exit(f"Design failed HTTP {r.status_code}: {r.text[:300]}")
 candidate = r.json()["candidates"][0]
 wav = base64.b64decode(candidate["audio_base64"])
 with open("design_sample.wav", "wb") as f:
     f.write(wav)
-print(f"候选 {candidate['duration_ms']}ms，WAV {len(wav)} 字节")
+print(f"Candidate {candidate['duration_ms']}ms，WAV {len(wav)} bytes")
 
 r = requests.post(
     f"{BASE}/model",
@@ -34,9 +32,9 @@ r = requests.post(
     timeout=180,
 )
 if r.status_code != 201:
-    sys.exit(f"持久化失败 HTTP {r.status_code}: {r.text[:300]}")
+    sys.exit(f"Persistence failed HTTP {r.status_code}: {r.text[:300]}")
 voice_id = r.json()["_id"]
-print("已持久化为音色", voice_id, r.json().get("state"))
+print("Persisted voice", voice_id, r.json().get("state"))
 try:
     t = requests.post(
         f"{BASE}/v1/tts",
@@ -45,11 +43,11 @@ try:
         timeout=120,
     )
     if t.status_code != 200:
-        sys.exit(f"用新音色合成失败 HTTP {t.status_code}: {t.text[:300]}")
+        sys.exit(f"Synthesis with new voice failed HTTP {t.status_code}: {t.text[:300]}")
     with open("design_voice_tts.mp3", "wb") as f:
         f.write(t.content)
-    print(f"OK 用设计音色合成 {len(t.content)} 字节 -> design_voice_tts.mp3")
+    print(f"OK designed-voice synthesis {len(t.content)} bytes -> design_voice_tts.mp3")
 finally:
     if not keep:
         d = requests.delete(f"{BASE}/model/{voice_id}", headers=HEADERS, timeout=30)
-        print("已删除测试音色:", d.status_code)
+        print("Deleted test voice:", d.status_code)

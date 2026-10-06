@@ -1,36 +1,30 @@
-# 品类配方：保温杯 / 饮器容器 · v0.3
+# Drinkware / Thermos Recipe
 
-> v0.3 变更：通用约束与品类审美预设**分层**；新增覆盖优先级；硬约束按名引用不再重述（定义见 core-skeleton.md）。
+This is a category-specific preview recipe. Its defaults come from a small number of reviewer observations, not universal photographic rules.
 
-## 品类判定（配方页 Intake 必做）
+## Category and precedence
 
-本配方页仅适用于**饮器/保温容器类商品**（保温杯、水杯、水壶、保温瓶）。其他品类（美妆/3C/食品/服装）→ 明确告知"该品类配方页暂未覆盖"，中止本页流程，不强行套用饮器规则；无品类信息 → 访谈确认商品类别，无法确认时按"通用商品约束"兜底（跳过本文件审美预设）。
+Use only for drinking containers such as thermoses, cups and bottles. Do not silently apply these rules to cosmetics, electronics, food or clothing. If the category is unclear, clarify it before using the recipe.
 
-## 覆盖优先级（冲突时的唯一规则）
+User instructions take precedence over recipe defaults. Keep any constraints applicable to the authorized task explicit; the current user's instructions govern conflicts. Model wording should translate the selected rules rather than introduce new ones.
 
-**用户输入 > 品类审美预设 > 通用约束 > 硬约束（永不覆盖）**
+## Scene defaults
 
-例：用户要求"暖色调"→ 覆盖本页"冷调呼应金属"预设；用户什么都说了 → 用预设；任何用户输入都不能取消硬约束。
+| Scene | Default |
+|---|---|
+| Studio variant | Pale gray gradient, three-quarter angle, closed lid, overhead softbox and contact shadow |
+| Tabletop | Clean surface, centered product, one cool-neutral light source; no props by default |
+| Detail | Open lid as in the reference, close view, side light on brushed metal, shallow depth of field |
+| Autumn atmosphere | Leaves and warm light only when the brief calls for them |
 
-## 饮器审美预设（品类专属；来源：用户三轮盲评扣分点 + C03 已毕业场景，属初步经验非普适规律）
+If the user requests props, keep them subordinate to the product, historically no more than two at the edges and out of focus. A simple brief should produce a simple scene. The latest thermos case found insufficient difference between tabletop and studio: inspect scene differentiation rather than assuming these presets solve it.
 
-| 场景 | 模板要点 | 实证 |
-|---|---|---|
-| 白底棚拍变体 | 浅灰渐变背景、3/4 角、闭合盖、顶部柔光高光、接触阴影 | C03-edit studio-variant |
-| 桌面使用场景 | **默认零道具**：纯净桌面、产品居中、单一冷白/中性光源、冷调呼应金属产品；道具仅当 brief 明确要求时加（≤2 件、置边缘、虚化） | 2026-10-01 用户裁决「可以不加」；旁证：Higgsfield 头部模板 Quiet Gray 增强词自带 no props/no extra objects。旧记录：desk v2 的笔记本+笔被用户判为多余 |
-| 细节近景 | 开盖状态（与参考一致）、微距、侧光拉丝质感、浅景深 | C03-edit lid-closeup |
-| 秋季氛围图 | 枫叶+暖光可入景，禁热气与其他容器 | 竞技场验证 |
+## Category constraints
 
-**已知用户偏好（来自盲评，注意是单一评审者的初步信号）**：对画面明暗敏感（避免暗调，除非 brief 要求）；对道具抢主体敏感（道具 ≤2 件、放边缘、虚化）；**brief 简单时输出必须简单——预设不得替用户加场景元素，道具默认为零，用户要求才加（2026-10-01 裁决）**。
+- No steam or vapor around the thermos unless the user's requested scene changes this policy. This is a drinkware-specific aesthetic constraint, not proof of insulation performance.
+- The product is the only cup/bottle/vessel unless the brief requests additional containers.
+- State the lid's open/closed position for each scene.
+- No people or hands by default. A requested use demonstration must specify the contact action.
+- No liquid splashes by default.
 
-## 品类专属硬约束（本品类红线的定义处；2026-10-02 从骨架降回品类层）
-
-- 无热气/蒸汽（保温杯卖点即保温，裸露热气暗示保温失效）
-- 唯一容器：画面中商品为唯一杯/瓶/罐类主体（历史违例：咖啡杯×2、蒸汽马克杯×1）
-- 盖子/开合状态按场景显式写明
-- 默认无人物无手部（使用演示类除外，接触动作须具体）
-- 不出现暗示饮用的液体飞溅（除非 brief 要求）
-
-## 品类专属 QC 补充
-
-像素级 QC 时重点核对（宿主无视觉能力时转给用户看图）：杯口无热气、无第二容器、盖子开合与场景一致。
+Inspect extra containers, steam, lid position and product identity when vision is available. Otherwise disclose the unperformed visual review.

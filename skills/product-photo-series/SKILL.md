@@ -1,36 +1,26 @@
 ---
 name: product-photo-series
-description: |
-  从商品参考图制作一组协调的商业图片（1:1 电商系列：白底棚拍变体 / 桌面使用
-  场景 / 细节近景），或对已有商品图做风格重绘。Require 用户有商品参考照片，
-  或任务明示接受文字兜底。Trigger on: 商品图、电商图、产品摄影、白底棚拍、
-  场景图、细节近景、商业图系列、给…做一组图。
-  仅适用于饮器/保温容器类商品（品类判定见流程）；其他品类如实告知暂未覆盖。
-  Exclude 非商品类图片、视频请求、旁白请求——这些配方页尚未包含，如实告知。
+description: Make a coordinated square product photo series from a reference photo of drinkware or a thermos. Use for studio, tabletop and detail product images. Other product categories are outside the evaluated scope. Do not use for videos or general illustration.
 ---
 
-# 商品商业图系列（Product Photo Series）· v0.3
+# Product Photo Series
 
-基于商品参考图产出协调的多场景商业图系列。**产品身份由参考图锁定，文字只负责场景。**
+**Validation:** a thermos case completed reference cleanup and three scene edits on 2026-10-06, with output inspection and local test-ledger reconciliation. Tabletop and studio scenes were too similar. This is a case-tested preview, not evidence of general quality or exact geometry preservation. This English revision has not undergone a new Agent execution test.
 
-## 执行前必读
+The reference image anchors product identity; text specifies the scene.
 
-骨架（缺行检查/确认门禁/硬约束/QC/降级交付的唯一表述）见 `../shared/core-skeleton.md`；目标模型方言见 `references/dialect-gpt-image-2.json`（注意：价格与参数以实时 estimate 为准，方言表不保存）；饮器品类判定、审美预设与覆盖优先级见 `references/category-thermos.md`。这些文件与本页冲突时，以骨架为准。
+## Required reading
 
-## 流程
+Read `../shared/core-skeleton.md`, `references/dialect-gpt-image-2.json` and `references/category-thermos.md`. The shared skeleton owns authorization, execution, recovery and delivery; the category reference owns drinkware-specific constraints. Discover current models, parameters and prices from the execution service.
 
-1. **品类判定**（配方页第一步）：确认商品属于饮器/保温容器类；其他品类 → 如实告知"该品类配方页暂未覆盖"并中止，不套用饮器规则。
-2. **缺行检查**：按骨架缺行检查表执行——内容缺口交互模式访谈一次问完（≤3 问，带选项）；无人值守且缺参考图 → 按骨架终态规则（任务明示接受文字兜底才渲染，否则中止并报告阻塞）。
-3. **参考图上传**：`create_media_upload` → PUT 参考图 → 得 `object_key`。上传失败 → 报告 upload_url 与 object_key 请用户手动上传后续接，不静默跳过。
-4. **清洗编辑（参考图含手部/文字/水印时推荐）**：一次"去污染+白底棚拍化"编辑，后续场景以干净资产 `object_key` 为输入。
-5. **场景渲染**：每场景一条最终 prompt。产品身份只写"与参考图完全一致"；场景/灯光/构图按品类审美预设（用户输入可覆盖，优先级见品类文件）；约束按方言表翻译，定义以骨架硬约束为准。
-6. **估价 → 确认门禁 → 提交**：按骨架唯一表述执行；每场景单独估价、单独幂等键；多场景确认的是逐场景单价。
-7. **轮询与取回**：每个 generation 提交后用 `get_generation_status` 轮询到终态，再 `get_generation_result` 取回图片 URL 与账单——**没有终态和结果文件不算完成**。
-8. **QC**：按骨架宿主能力分级执行（元数据级+prompt 级必做；像素级无视觉能力时明确标注未执行）。
-9. **交付**：图片 URL/文件 + 每张最终 prompt + 触发的约束 + 扣费 + **决策披露清单**（用户输入/方言渲染替定/硬约束）。
+## Workflow
 
-## 本页增量约束（引用骨架定义，不重述）：产品外观每张 prompt 必含"与参考图完全一致"；盖子状态按场景显式写明。
-
-## 降级交付
-
-按骨架降级交付段执行，本页无额外降级规则。
+1. Confirm the product is drinkware or a thermos. For other categories, explain that this recipe has not been evaluated and stop this workflow.
+2. Check missing content using the skeleton. Ask about reference, quantity, purpose or scene selection together, at most three questions. A missing reference is a blocker unless the user explicitly accepts text-only generation and its identity limitation.
+3. Upload the user's reference using the currently available upload tool and its returned upload instructions. Retain the object key; do not publish signed URLs or credentials.
+4. If the reference contains hands, surrounding text or a watermark, optionally generate one clean reference edit. Preserve product identity and use its output as the reference for subsequent scenes.
+5. Write one final prompt per scene. Include "exactly the same product as in the reference" and an explicit lid state. Select scene, lighting and composition from the category reference, subject to the user's brief. Reference-guided generation still requires visual verification.
+6. Estimate each scene separately with the exact workspace, model, inputs and parameters to be submitted. Follow the existing user authorization; use a distinct idempotency key per operation.
+7. Submit once, poll the original generation ID to a terminal state, then retrieve the result and actual billing. A submission alone is not completion.
+8. Check metadata, prompt constraints and available visual evidence. For drinkware, inspect steam, additional containers and lid state. Report checks that could not be performed.
+9. Deliver outputs, final prompts, parameters, actual charges/refunds and decisions attributed to the user, defaults and constraints. Apply the skeleton's partial-delivery rules when a scene fails.

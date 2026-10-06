@@ -1,9 +1,13 @@
-# 导入来源与边界
+# Sources and Boundaries
 
-2026-10-06 从本地 fish-media-skill 的 skills 目录导入 12 个 Skill 与 shared；未导入 evals 结果、媒体素材、本机 .mcp.json、旧 zip、stdio bridge 或旧交付说明。原始工作台留作历史证据，新仓库作为后续编辑来源。
+The original preview imported twelve local Fish media/API Skills and shared references. User media, keys, local client paths, evaluation outputs and old ZIP files were not included.
 
-首版保留规则正文，不声称效果已达标。explainer-video 和 subtitles-burn 保留 dormant 状态；其余标 experimental。正文中的历史“毕业/验证”等措辞仅代表旧案例，不构成本仓库稳定版的自动批准。
+The English 0.1.0-preview.3 edition retains eight entries: five API guides plus product photos, thumbnails and UGC product video. Four entries were removed from the new tree and payload: media router, narration, explainer video and subtitle burning. Original source is archived in the local workbench and Git history; prior immutable releases remain accessible.
 
-修复封面页缺失的 references/dialect-gpt-image-2.json：复制现有商品图页同名文件，未更改模型配方。这是打包依赖修复，不是效果改进。
+This is an English editorial adaptation, not a byte-for-byte translation or new paid evaluation. Historical static price/model/voice tables have been replaced by current-tool discovery guidance, while executable examples preserve their historical request structure. The shared contract now respects existing explicit user spending authorization, including an authorized task without a numeric cap; it does not authorize extra deliverables or retries.
 
-API examples 是参考源码；MCP 返回内容，不自动运行或安装。shared 中的引用保持包内相对关系。
+Product and thumbnail prompt guidance was informed by historical HF workflow research, model-prompt references and limited local reviewer observations. The historical direct HF MCP catalog has twelve workflows; official GitHub Skills, CLI generation workflows, tools and presets are different inventories. See the separate historical adaptation map; it is not the Fish supported catalog.
+
+API prose reported real-key tests and eleven regression passes on 2026-10-03. During this editorial pass, the original runner and claims were located, but the actual run log was not recovered. Do not describe that claim as newly reproduced proof. English-only sample messages are documentation/output changes, not another regression pass.
+
+Scripts are reference source. MCP retrieval does not install dependencies, run a script or obtain spending approval. Multilingual spoken/transcription fixtures may remain in samples.

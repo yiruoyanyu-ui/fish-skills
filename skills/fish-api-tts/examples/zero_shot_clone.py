@@ -1,6 +1,4 @@
-"""零样本克隆：直接用参考音频 + 其逐字文本合成新文本（无需先建音色）。
-必须用 MessagePack（JSON 无法携带音频字节）。需要 pip install msgpack。
-用法: python zero_shot_clone.py ref_audio.mp3 "参考音频里说的原话" "要合成的新文本" [out.mp3]"""
+"""Reference-audio TTS using MessagePack. Requires msgpack. Usage: python zero_shot_clone.py ref_audio.mp3 "reference transcript" "new text" [out.mp3]."""
 import os
 import sys
 
@@ -19,7 +17,7 @@ body = msgpack.packb(
         "format": "mp3",
         "references": [{"audio": reference_audio, "text": ref_text}],
     },
-    use_bin_type=True,  # 音频必须编码成 msgpack bin 类型
+    use_bin_type=True,  # Encode audio as MessagePack binary
 )
 r = requests.post(
     "https://api.fish.audio/v1/tts",

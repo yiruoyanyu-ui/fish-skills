@@ -1,72 +1,56 @@
-# Fish Media 全库骨架（流程/门禁/红线 · 全配方页共享）· v0.4
+# Shared Media Execution Contract
 
-> 版本化骨架，配方页只写差异增量。改本文件 = 影响所有配方页，须过全量回归。
-> v0.4 变更（2026-10-02）：硬约束分层（普适/品类拆分，用户指出过拟合）；物理位置迁至 skills/shared/。此前 v0.3 变更（四路评审驱动）：统一访谈上限/确认门禁/无人值守终态三组矛盾；硬约束收敛为全库唯一定义处；QC 按宿主能力分级；删除静态价格（以实时 estimate 为准）。
+This contract is shared by product photos, thumbnails and UGC. Changes affect all three workflows. Skill text is guidance; the current user's instructions and authorization take precedence.
 
-## 流程骨架
+## Workflow
 
-```
-缺行检查 → 参考图上传 → [可选清洗编辑] → 场景渲染 → 估价 → 确认门禁
-→ 提交（幂等键）→ 轮询到终态 → 取结果 → QC → 交付（prompt+参数+扣费+决策披露）
-```
+Resolve missing content → upload references → optional cleanup → assemble the prompt → estimate → apply spending authorization → submit once with an idempotency key → poll the original ID → retrieve results and billing → inspect → deliver.
 
-## 工具调用方式
+The Agent calls the connected execution tools directly. Do not assume another Agent inherits MCP authorization. If a tool or command is denied, do not loop on the same request. Use a permitted equivalent when available and disclose checks that remain unperformed.
 
-fish MCP 工具（estimate/generate/status/result）**由你直接调用**。**禁止**把单个工具调用委派给 Agent 子代理（子代理无 MCP 授权，会空转卡死）；子代理只可用于纯文本工作。
-**被拒工具不重试（2026-10-02 实证补充）**：任何工具/命令被权限系统拒绝后，**禁止原样重试**同一命令；至多换一种等价方案再试一次，仍被拒则绕行该步骤并如实披露（如 120px 缩略检查不可做→跳过并声明"该检查未执行"），绝不允许在被拒命令上循环耗尽回合。
+## Missing information
 
-## 缺行检查（查表，不靠语感）
-
-| 缺的行 | 类型 | 出口 |
-|---|---|---|
-| 参考图 / 数量 / 用途 / 场景模板选择 | **内容决策** | 交互模式 → 访谈一次问完（≤3 问）；无人值守 → 见下方终态规则 |
-| 灯光 / 构图 / 材质 / 风格 | **工艺参数** | 自动补：方言表 + 品类配方渲染，**永远不问用户** |
-| 无文字、增料禁令等全库硬约束 + 品类专属红线 | **硬约束** | 永远补全（全库项定义见本文件"硬约束"；品类项定义见各品类配方，如保温杯的无热气/唯一容器） |
-
-**无人值守 + 缺参考图的终态（唯一规则）**：仅当任务描述**明示接受文字兜底**（如"按文字兜底处理"）才渲染生成，且交付必须声明"文字生图无法保证产品外观一致"；否则**中止生成**，在交付中报告阻塞状态与所需补充信息。禁止无参考图时静默走文字生图。
-
-## 确认门禁（唯一表述；路由器与配方页同文引用，不得改写）
-
-生成前必须估价，且估价与提交的 workspace/model/参数**完全一致**。然后三选一：
-- **交互会话**：向用户展示估价并获确认后才提交
-- **预授权任务**（任务描述明示预算上限并要求直接执行）：任务描述即确认，直接以估价提交，不停下询问
-- **两者都不满足**：不提交
-
-**多场景语义**：每个场景**单独估价**；确认的是"逐场景单价"（每张 X credits × N 张 ≈ 合计 Y）；任一场景报价与已确认值不符 → 重新走门禁；部分失败 → 逐场景如实报告账单。
-
-## 访谈纪律（仅交互模式，且仅内容决策）
-
-1. 只问内容决策（参考图/数量/用途/场景模板）；工艺问题一个不问
-2. 带选项的短问题，绝不开放式
-3. 全部缺口**一次问完，上限 3 问**（全库统一值）
-4. 选项直接映射配方页场景模板，选完即路由
-
-## 硬约束（全库普适层；品类红线在品类配方，2026-10-02 分层修正）
-
-- 画面无任何文字、字母、数字、logo、水印（默认净版；设计类配方页按其页面"文字政策"执行——默认无字渲染+确定性叠字，用户显式要求才烧字进图）
-- 增料禁令：禁止添加请求未隐含的物体、人物、品牌、文案
-
-> 分层规则：本节只放**跨垂类普适**的红线。源自单一品类的经验教训（如保温杯的无热气、唯一容器、盖子状态、默认无人物）定义在对应品类配方里，按品类装配——禁止再把单品类教训升格为全库法则（2026-10-02 用户指出：无热气对咖啡视频就是错的）。诚实性规则（不冒充/QC 分级/降级交付）已在本文件 QC 与交付段，不在此重复。
-
-> 方言表只负责把上述约束**翻译成目标模型语言**，品类配方只**按名引用**不重述；两处均不得新增或改写约束定义。
-
-## QC（按宿主能力分级，如实执行）
-
-- **元数据级（必做）**：逐张核对生成状态、尺寸、扣费/退款、文件哈希
-- **prompt 级（必做）**：核对约束已写入最终 prompt
-- **像素级（仅当宿主具备视觉能力）**：不具备时明确标注"像素级 QC 未执行，请用户看图"——不冒充通过
-
-## 交付披露
-
-交付附决策披露清单：**来自用户输入 / 你按方言表渲染（替用户定的）/ 硬约束**。披露不等于验证：生成状态、结果文件、实际扣费须分别如实读取后再披露。
-
-## 降级交付段
-
-| 失败点 | 交付动作 |
+| Missing item | Action |
 |---|---|
-| 参考图缺失（无人值守且未授权兜底） | 报告阻塞 + 所需补充信息，**不生成** |
-| 上传失败 | 报告 upload_url + object_key，请用户手动上传后续接 |
-| 估价失败或与任务预期不符 | 停止并报告，不提交 |
-| 生成超时 | 查询原 ID 终态；不重复提交 |
-| 单场景违例 | 交付合规场景，违例场景单独列出并说明 |
-| 交付后加工（叠字/裁切/合成等） | **先写交付文件**（含"加工未完成"状态与基础成品 URL），再做加工；加工失败或中断 → 交付基础成品+加工脚本，不冒充完成（2026-10-02 封面轮实证：加工中途被掐断且无交付文件） |
+| Reference, quantity, purpose or scene selection | Ask together, at most three concise questions with useful choices |
+| Lighting, composition, material or style defaults | Resolve from the recipe and the actual reference; disclose defaults |
+| Recipe constraints | Include applicable rules; keep category-specific restrictions in their category file |
+
+Without a reference, unattended product generation stops unless the user explicitly accepts text-only fallback. Disclose that such generation cannot guarantee product identity.
+
+## Spending authorization
+
+Estimate using the exact workspace, model, inputs and parameters that will be submitted.
+
+- For an interactive task without prior spending approval, show the estimate and obtain approval before submission.
+- With existing explicit spending authorization, continue within its scope and limit. Explicit authorization without a budget cap is not an authorization to expand the requested deliverables.
+- Without applicable authorization, do not submit.
+
+Estimate scenes separately and explain unit prices and the expected total. If a new quote falls outside the approved scope, obtain the needed authorization. Report partial failures and charges separately. Never treat Skill retrieval as payment approval.
+
+## Shared visual defaults
+
+Default to no text, letters, numbers, logos or watermarks, except where the recipe's explicit text policy applies. Do not add objects, people, brands or copy that the request does not imply.
+
+Do not promote a thermos-specific observation, such as "no steam", into a universal rule. A requested coffee scene may legitimately include steam. The recipe owns category restrictions; a model dialect translates them without inventing new ones.
+
+## Quality checks
+
+- Metadata: terminal status, output dimensions, files/hashes when available and charges/refunds.
+- Prompt: requested constraints are present in the final submitted prompt.
+- Pixels: inspect the actual output if vision is available; otherwise mark visual QC unperformed and request user review.
+
+A successful generation status does not prove visual quality, product identity or user acceptance.
+
+## Delivery and recovery
+
+Provide outputs, final prompts, parameters, task IDs, charges/refunds and decisions identified as user input, resolved defaults or recipe constraints.
+
+| Failure | Response |
+|---|---|
+| Missing unapproved reference | Report blocker and required material; do not generate |
+| Upload failed | Report the failed step and object key; keep signed URLs in authorized private context |
+| Quote failed or exceeded authorization | Stop before submission and explain |
+| Generation slow or submission uncertain | Query the original ID or idempotency record; do not auto-submit again |
+| One scene violates requirements | Deliver valid scenes and identify failed ones separately |
+| Overlay, crop or assembly unfinished | Save the preliminary deliverable and base media first; deliver base output and processing script with unfinished status |

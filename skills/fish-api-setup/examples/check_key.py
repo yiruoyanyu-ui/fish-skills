@@ -1,6 +1,4 @@
-"""验证 Fish Audio API key 并读取 API 钱包余额（免费，不消耗额度）。
-key 来源：环境变量 FISH_API_KEY，其次当前目录 .env。绝不打印 key。
-退出码：0=有效且有余额  1=未找到 key  2=key 无效  3=其他错误  4=有效但余额为 0"""
+"""Check the Fish API key and API wallet without printing the key. Read FISH_API_KEY or a local .env. Exit codes: 0 funded, 1 missing key, 2 invalid, 3 error, 4 valid but unfunded."""
 import os
 import re
 import sys
@@ -25,7 +23,7 @@ def load_key():
 def main():
     key = load_key()
     if not key:
-        print("未找到 FISH_API_KEY（环境变量或 .env）")
+        print("FISH_API_KEY not found in environment or local .env")
         return 1
     r = requests.get(
         "https://api.fish.audio/wallet/self/api-credit",
@@ -33,15 +31,15 @@ def main():
         timeout=30,
     )
     if r.status_code == 401:
-        print("key 无效（401 Invalid Token）")
+        print("Invalid key (401)")
         return 2
     if r.status_code != 200:
-        print(f"异常：HTTP {r.status_code} {r.text[:200]}")
+        print(f"Unexpected HTTP {r.status_code} {r.text[:200]}")
         return 3
     credit = float(r.json()["credit"])
-    print(f"key 有效；API 钱包余额 {credit:.6f}（与平台 credits 独立）")
+    print(f"Valid key; API wallet balance {credit:.6f}(separate from platform credits)")
     if credit <= 0:
-        print("余额为 0：生成类接口会返回 402，请到 fish.audio/app/developers 充值")
+        print("Zero API balance: generation returns 402; configure API funds in the developer area")
         return 4
     return 0
 

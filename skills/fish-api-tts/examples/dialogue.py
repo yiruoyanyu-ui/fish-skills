@@ -1,6 +1,4 @@
-"""多说话人对话（需 S2 家族模型，如 s2-pro）。
-用法: python dialogue.py <speaker0_音色id> <speaker1_音色id> [out.mp3]
-说话人下标对应 reference_id 数组位置，文本里用 <|speaker:N|> 切换。"""
+"""Multi-speaker TTS for a supported model. Usage: python dialogue.py <voice0> <voice1> [out.mp3]. Speaker markers index the reference_id array."""
 import os
 import sys
 

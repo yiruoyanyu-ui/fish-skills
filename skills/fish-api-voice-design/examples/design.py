@@ -1,6 +1,4 @@
-"""声音设计：用文字描述生成音色候选（同步返回；音频为 WAV 的 base64）。
-用法: python design.py "音色描述" [参考文本<=150字] [n=1]
-产出: candidate_<index>.wav，并打印每个候选的特征描述。"""
+"""Synchronous voice design. Usage: python design.py "description" [audition text] [n]. Saves candidate WAV files and prints candidate metadata."""
 import base64
 import os
 import sys

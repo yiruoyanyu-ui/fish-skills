@@ -1,6 +1,4 @@
-"""最小 TTS 调用（REST）。
-用法: FISH_API_KEY=... python basic_tts.py "要念的文字" [reference_id] [out.mp3]
-reference_id 传空串 "" 表示用默认音色。"""
+"""Basic REST TTS. Usage: python basic_tts.py "text" [reference_id] [out.mp3]. An empty voice ID selects the default voice."""
 import os
 import sys
 
