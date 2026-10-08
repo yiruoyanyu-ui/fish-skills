@@ -1,14 +1,16 @@
 # Current Validation and Limitations
 
-## Current candidates: product photos .6, covers .3, UGC .5
+## Current candidates: product photos .6, covers .3, UGC .5, video recreation .5
 
-This is an experimental source revision authorized for GitHub main, not stable quality acceptance or production activation. English prose follows the current approved local sources. Product worked prompts and the current UGC helper retain source content/bytes; shared execution is reused against its unchanged Chinese source hash. The [new source map](evidence/english-source-map-20261008-candidates-6-3-5.json) identifies the exact inputs and outputs of this adaptation.
+This is an experimental source revision authorized for GitHub main, not stable quality acceptance or production activation. English prose follows the current approved local sources. Product worked prompts and the current UGC helper retain source content/bytes; shared execution is reused against its unchanged Chinese source hash. The [three-Skill source map](evidence/english-source-map-20261008-candidates-6-3-5.json) identifies the exact inputs and outputs of that adaptation. The [recreation supplement map](evidence/english-source-map-20261008-reference-recreation-5.json) records the added source, copied unchanged from its approved English local file.
 
 Static validation covers Skill frontmatter, active local references and anchors, Python syntax, catalog descriptions, source hashes and diff whitespace. The existing deterministic package builder is run after committing content, as it requires a clean committed payload. These checks concern content/package integrity and do not establish creative behavior or media quality.
 
 The local Chinese UGC candidate.5 helper had 30 deterministic assertions using six synthetic fixtures and eleven CLI assembly cases. Those checks covered rejection of nonzero/unknown source-audio offsets for keep/lower, replace behavior, no overwrites, narration overlap and explicit tail extension. The helper is copied unchanged here; the regression was not rerun as a new English behavior evaluation. No product visuals or narration naturalness were assessed by those synthetic checks.
 
-No new Agent behavior comparison, paid Fish/TTS generation, complete product-artifact viewing or listening acceptance is claimed for this English revision. All catalog entries remain experimental and the package channel remains preview. Earlier observations below describe earlier candidates, not acceptance of candidates .6/.3/.5.
+Video recreation v0.2-candidate.5 has only static review. No new motion-generation run, Agent behavior comparison or complete action/output-quality validation was performed for this candidate. Source upload and package integrity do not establish action fidelity. The entry is a single file referencing shared execution; no extra action mapping, clip-selection, prompt-enhancement or speed-adjustment guide is added.
+
+No new Agent behavior comparison, paid Fish/TTS generation, complete product-artifact viewing or listening acceptance is claimed for this English revision. All catalog entries remain experimental and the package channel remains preview. Earlier observations below describe earlier candidates, not acceptance of the current four candidates.
 
 ---
 

@@ -20,6 +20,12 @@
       "entry": "skills/ugc-product-video/SKILL.md",
       "description": "Create faceless, product-led promotional shorts with voice-over from real product references, including demonstrations, shot planning, generation and audio/video assembly when needed. Hands or POV may demonstrate use. Presenter, Avatar and real-person identity continuity use other workflows. Planning or script-only requests do not trigger generation. Purely silent displays and editing-only requests fall outside this complete workflow.",
       "status": "experimental"
+    },
+    {
+      "id": "reference-recreation",
+      "entry": "skills/reference-recreation/SKILL.md",
+      "description": "Recreate a reference video, focusing on its actions, with the original or a replacement character. Use for motion transfer, dance reenactment and video action recreation; character images supply appearance while the video supplies movement. Analysis or prompt-only requests return text without generation. Still-image style matching and product photography use other workflows.",
+      "status": "experimental"
     }
   ]
 }

@@ -1,3 +1,18 @@
+# 0.1.0-preview.4 — Four-Skill source with video recreation supplement
+
+Source-only update on 2026-10-08. No Release, R2 activation or production deployment is performed.
+
+- Add reference-recreation v0.2-candidate.5, copying the current approved English source byte for byte.
+- Keep product photos candidate.6, covers candidate.3 and UGC candidate.5 unchanged; the active catalog now has four Skills and ten payload files.
+- Keep recreation as one entry referencing shared execution. Do not restore retired action/reference pages or duplicate creative planning.
+- Add a recreation source hash map and retain the previous maps and upload records.
+- Recreation has only static review; no new action generation, Agent behavior or output-quality validation is claimed. Upload does not establish quality acceptance.
+- Retain package version preview.4, preview channel and experimental status.
+
+---
+
+## Earlier three-Skill source update
+
 # 0.1.0-preview.4 — Source revision for candidates 6 / 3 / 5
 
 Source-only update on 2026-10-08. No Release, R2 activation or production deployment is performed.

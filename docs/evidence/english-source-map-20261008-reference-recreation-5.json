@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-08",
+  "source_version": {
+    "reference-recreation": "v0.2-candidate.5"
+  },
+  "source_kind": "approved current local English source, matching frozen approved snapshot",
+  "destination_version": "0.1.0-preview.4",
+  "channel": "preview",
+  "status": "experimental source supplement; static review only; no new action generation, behavior or output-quality acceptance",
+  "previous_source_maps": [
+    "english-source-map-20261008.json",
+    "english-source-map-20261008-candidates-6-3-5.json"
+  ],
+  "files": [
+    {
+      "path": "skills/reference-recreation/SKILL.md",
+      "source_sha256": "4a6c6bcc61e92b89c5f849fb0dcc1c37cdc59e2fbbef86b91aa0dc80fd747e54",
+      "english_sha256": "4a6c6bcc61e92b89c5f849fb0dcc1c37cdc59e2fbbef86b91aa0dc80fd747e54",
+      "mode": "already-English source copied byte for byte; no rewriting"
+    }
+  ],
+  "catalog_skill_count": 4,
+  "expected_payload_file_count": 10
+}
