@@ -12,18 +12,22 @@ import subprocess
 import tempfile
 
 
-def probe(path):
+def probe(path, duration_kinds=("video", "audio")):
     result = subprocess.run(
         ["ffprobe", "-v", "error", "-show_format", "-show_streams", "-of", "json", str(path)],
         check=True, capture_output=True, text=True,
     )
     info = json.loads(result.stdout)
     durations = {}
+    streams = {}
     # Match the first video/audio streams selected by the assembly command.
     # Container duration may follow a longer unrelated track; it is not footage length.
     for stream in info["streams"]:
         kind = stream["codec_type"]
-        if kind not in ("video", "audio") or kind in durations:
+        if kind not in ("video", "audio") or kind in streams:
+            continue
+        streams[kind] = stream
+        if kind not in duration_kinds:
             continue
         try:
             duration = float(stream["duration"])
@@ -35,7 +39,41 @@ def probe(path):
         if not math.isfinite(duration) or duration <= 0:
             raise ValueError(f"Cannot confirm a positive {kind} track duration: {path}")
         durations[kind] = duration
-    return durations
+    return durations, streams
+
+
+def source_audio_offset(streams, path):
+    starts = {}
+    for kind in ("video", "audio"):
+        stream = streams[kind]
+        try:
+            start = float(stream["start_time"])
+        except (KeyError, TypeError, ValueError):
+            try:
+                start = float(stream["start_pts"] * Fraction(stream["time_base"]))
+            except (KeyError, TypeError, ValueError, ZeroDivisionError):
+                raise ValueError(
+                    f"Cannot confirm source {kind} start time: {path}. "
+                    "For keep/lower, first normalize the timeline in an editor "
+                    "while preserving audio/video synchronization."
+                ) from None
+        if not math.isfinite(start):
+            raise ValueError(
+                f"Cannot confirm source {kind} start time: {path}. "
+                "For keep/lower, first normalize the timeline in an editor "
+                "while preserving audio/video synchronization."
+            )
+        starts[kind] = start
+    offset = starts["audio"] - starts["video"]
+    # This helper resets both streams. Reject a measurable relative start offset
+    # instead of silently moving existing audio relative to the picture.
+    if abs(offset) > 0.000001:
+        raise ValueError(
+            f"Source audio starts {offset:+.6f}s relative to video: {path}. "
+            "For keep/lower, first normalize the timeline in an editor "
+            "while preserving audio/video synchronization."
+        )
+    return offset
 
 
 def number(value, name):
@@ -58,17 +96,21 @@ def assemble(args):
         raise ValueError("Output must be an .mp4 file")
     if output.exists():
         raise ValueError(f"Output already exists; choose a new path: {output}")
-    source_tracks = probe(source)
+    used_source_kinds = ("video",) if args.source_audio == "replace" else ("video", "audio")
+    source_tracks, source_streams = probe(source, used_source_kinds)
     if "video" not in source_tracks:
         raise ValueError("Source has no video stream")
     source_duration = source_tracks["video"]
+    original_offset = None
+    if args.source_audio != "replace" and "audio" in source_streams:
+        original_offset = source_audio_offset(source_streams, source)
     rows = json.loads(manifest.read_text())
     if not isinstance(rows, list) or not rows:
         raise ValueError("Segments must be a nonempty JSON array")
     segments = []
     for row in rows:
         path = (manifest.parent / row["path"]).resolve(strict=True)
-        tracks = probe(path)
+        tracks, _ = probe(path, ("audio",))
         if "audio" not in tracks:
             raise ValueError(f"Narration has no audio stream: {path}")
         duration = tracks["audio"]
@@ -128,7 +170,7 @@ def assemble(args):
             "-b:a", "192k", "-movflags", "+faststart", str(rendered),
         ]
         subprocess.run(command, check=True)
-        actual_tracks = probe(rendered)
+        actual_tracks, _ = probe(rendered)
         if not {"video", "audio"}.issubset(actual_tracks):
             raise ValueError("Rendered file is missing video or audio")
         actual_duration = actual_tracks["video"]
@@ -147,7 +189,8 @@ def assemble(args):
         "source_track_durations": source_tracks,
         "actual_track_durations": actual_tracks,
         "source_audio": args.source_audio,
-        "source_audio_present": "audio" in source_tracks,
+        "source_audio_present": "audio" in source_streams,
+        "source_audio_relative_start": original_offset,
     }, ensure_ascii=False, indent=2))
 
 

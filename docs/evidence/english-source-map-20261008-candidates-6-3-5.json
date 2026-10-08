@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-08",
+  "source_version": {
+    "product-photo-series": "v0.4-candidate.6",
+    "thumbnail-cover": "v0.3-candidate.3",
+    "ugc-product-video": "v0.3-candidate.5"
+  },
+  "source_kind": "approved local working drafts; exact content is identified by source_sha256",
+  "destination_version": "0.1.0-preview.4",
+  "channel": "preview",
+  "status": "experimental source update; no behavior or artifact quality certification",
+  "previous_source_map": "english-source-map-20261008.json (preserved unchanged)",
+  "files": [
+    {
+      "path": "skills/product-photo-series/SKILL.md",
+      "source_sha256": "c77424803d36b8edac29fa8cc720d31860944c338b0e2dcda6a3116a1a564bf1",
+      "english_sha256": "b08f191fd8465a342ac6a29549b14bf51161337aeebe52ce946bed36a23ad890",
+      "mode": "English adaptation of current approved local prose"
+    },
+    {
+      "path": "skills/product-photo-series/references/photo-directions.md",
+      "source_sha256": "f6d0fd789e5e64e8b335e5cd5cc66bcddfde8b586b43f69539194cc164ee56b5",
+      "english_sha256": "2c35f684c6df96f664451fee44fce899b664006bb344c38e99f8bde013fb4249",
+      "mode": "English adaptation of current approved local prose"
+    },
+    {
+      "path": "skills/product-photo-series/references/product-photo-examples.md",
+      "source_sha256": "1d5fe2c2891c605ec13a8bed163d56e18cbbde815c44982039c486926bac9ea2",
+      "english_sha256": "63453580366c738ca0927109b77bacbaf68b1fa2cd66e0c34f8c1cdfe5c95485",
+      "mode": "English adaptation of current approved local prose"
+    },
+    {
+      "path": "skills/shared/core-skeleton.md",
+      "source_sha256": "38b75957ce7a89d8e951441cd91a074d2f23e67ce2e1d31fb6c6a9c154e65f8b",
+      "english_sha256": "2da155809f71a7a5abb4d3d76cc6ab0421f83532160a3872fd5fe535ea976e0d",
+      "mode": "existing English reused; Chinese translation source hash unchanged"
+    },
+    {
+      "path": "skills/thumbnail-cover/SKILL.md",
+      "source_sha256": "630476206e3e588bc16805d615e1f01588164bba0bef65c6fcd4507219c6c177",
+      "english_sha256": "d139e9136736fb6f68473d2e64379edc0f721853fd47c132c712ec04ccbc584b",
+      "mode": "English adaptation of current approved local prose"
+    },
+    {
+      "path": "skills/thumbnail-cover/references/thumbnail-craft.md",
+      "source_sha256": "54ea9c798194347a8d9626d1147dac254abb0d26a1a139cf58f1a3626151e4a8",
+      "english_sha256": "d6c4e180c8a52dacaa61a8426bd8e9da6b599134c79ef00cb1336147ac9dd5da",
+      "mode": "English adaptation of current approved local prose"
+    },
+    {
+      "path": "skills/ugc-product-video/SKILL.md",
+      "source_sha256": "4b06fd05bd8177d2c1f6efb3e6824e7407c201f582180c5c83cf6912afef3d96",
+      "english_sha256": "8f946edb885963c5678cdc88031736a76560d2ac70072f0dbb7ab183b1bcf621",
+      "mode": "English adaptation of current approved local prose"
+    },
+    {
+      "path": "skills/ugc-product-video/references/assembly-example.md",
+      "source_sha256": "44bce82fa97dc604c3ad36370f805e40cd2b24e3b2d1c93c291e22343e4e3e65",
+      "english_sha256": "97263d6be54612d86ff85ff44dfef3b71730621b7520d391bdaf00a5a8f0d0a0",
+      "mode": "English adaptation of current approved local prose"
+    },
+    {
+      "path": "skills/ugc-product-video/scripts/assemble_voiceover.py",
+      "source_sha256": "82b9433b00d44093083d858b411441268d32935096a0d9a578206043b6e96eeb",
+      "english_sha256": "82b9433b00d44093083d858b411441268d32935096a0d9a578206043b6e96eeb",
+      "mode": "current helper copied byte for byte"
+    }
+  ],
+  "removed_files": [
+    "skills/product-photo-series/references/category-thermos.md",
+    "skills/shared/creative-planning.md"
+  ],
+  "worked_prompt_sha256": [
+    "2e1bf5a62214e6c362a7dbbaa0c78c4e701a84a12808062cfd418e52bf2c4588",
+    "db94b024e6cc81cb3bcfdd892653b62846688ed43e9e3902ef13234bf139e81e",
+    "9c1591ed86ff4b4381377af80ef5e8c5c00e41ce9c9329daa8d07e2775df9e4d",
+    "b8757bbd61d230ffe0665728d5abfff3303597a70623a3628881712e67214086"
+  ]
+}

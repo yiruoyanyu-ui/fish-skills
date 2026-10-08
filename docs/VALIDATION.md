@@ -1,5 +1,19 @@
 # Current Validation and Limitations
 
+## Current candidates: product photos .6, covers .3, UGC .5
+
+This is an experimental source revision authorized for GitHub main, not stable quality acceptance or production activation. English prose follows the current approved local sources. Product worked prompts and the current UGC helper retain source content/bytes; shared execution is reused against its unchanged Chinese source hash. The [new source map](evidence/english-source-map-20261008-candidates-6-3-5.json) identifies the exact inputs and outputs of this adaptation.
+
+Static validation covers Skill frontmatter, active local references and anchors, Python syntax, catalog descriptions, source hashes and diff whitespace. The existing deterministic package builder is run after committing content, as it requires a clean committed payload. These checks concern content/package integrity and do not establish creative behavior or media quality.
+
+The local Chinese UGC candidate.5 helper had 30 deterministic assertions using six synthetic fixtures and eleven CLI assembly cases. Those checks covered rejection of nonzero/unknown source-audio offsets for keep/lower, replace behavior, no overwrites, narration overlap and explicit tail extension. The helper is copied unchanged here; the regression was not rerun as a new English behavior evaluation. No product visuals or narration naturalness were assessed by those synthetic checks.
+
+No new Agent behavior comparison, paid Fish/TTS generation, complete product-artifact viewing or listening acceptance is claimed for this English revision. All catalog entries remain experimental and the package channel remains preview. Earlier observations below describe earlier candidates, not acceptance of candidates .6/.3/.5.
+
+---
+
+## Earlier observations and translation record
+
 Updated 2026-10-08 for the three-Skill main-branch source update. This is an experimental source upload authorized by the user, not stable quality acceptance or activation of a production channel.
 
 | Skill | Observations | Limits |

@@ -1,6 +1,6 @@
 # Product Photo Decisions and Worked Examples
 
-These are independently authored teaching scenarios, not observed user products or generated results. Replace assumptions with this task's sources. Do not inherit unknown materials, dimensions, formulations or functions. Full prompts illustrate each section's purpose; this structure and English are optional.
+These are teaching scenarios. Replace them with this task's sources; do not inherit unknown information. Full prompts illustrate each section's purpose; structure and language are optional.
 
 ## Example 1: Hand-cream banner, then a hero image
 
@@ -8,11 +8,11 @@ These are independently authored teaching scenarios, not observed user products 
 
 Brief: "Make a 3:2 website banner, product right and headline space left. No person, clean and warm. Retain package print; no added advertising text."
 
-Assume the product reference shows an upright pale-cream tube, dark-brown bottom cap and readable "SORA HAND CREAM". User information confirms a matte coating. Back, capacity and efficacy are unknown. A second reference supplies only left text space/right product placement, not its product or brand.
+Assume the product reference shows an upright pale-cream tube, dark-brown bottom cap and readable "SORA HAND CREAM." User information confirms a matte coating. Back, capacity and efficacy are unknown. A second reference supplies only left text space/right product placement, not its product or brand.
 
 ### Plan
 
-Keep the product's front readable on the right and a continuous, stable-contrast text region on the left. Soft side light reveals shape and matte coating; contact establishes support. A warm background and light express warmth without adding people, towels, plants or unconfirmed ingredients.
+The banner serves the product and later headline in one image. Keep the product's front readable on the right and a continuous, stable-contrast text region on the left, without light/shadow fragmenting it. Soft side light reveals shape and matte coating; contact between the cap and support establishes placement. A pale warm background and light express the requested warmth.
 
 No person, left/right layout, original lettering and no added headline are requirements of this brief. Background color and light placement are creative choices, not universal skincare defaults.
 
@@ -26,11 +26,15 @@ Use input image 2 only for the layout relationship: product on the right, quiet 
 Use a broad soft light from the upper left to describe the matte-coated tube's gentle curve. Keep the front print legible, avoiding a bright reflection across the label. Maintain the reference product colors while giving the surrounding background a restrained warm tone. No person and no added headline for this brief; retain the original package lettering. Deliver a single coherent photographic frame.
 ```
 
-The first paragraph establishes appearance and visible facts, distinguishing package text from added copy. The second limits the layout reference's role. The third uses light for volume/readability and implements this brief's choices.
+### What each paragraph does
+
+- The first establishes product sources and visible facts, distinguishing package text from added copy.
+- The second limits the layout reference's role and assigns space to the product and text.
+- The third uses light for volume/readability and implements this brief's people/text choices.
 
 ### Change to a white-background hero
 
-New brief: "Make a 1:1 white-background hero with complete appearance and original label." Remove banner text space, right-third placement and warm background. Stop using the layout reference; do not inherit props.
+New brief: "Make a 1:1 white-background hero with complete appearance and original label." Remove banner text space, right-third placement and warm background. Stop using the layout reference and do not inherit props from the banner. A full prompt can be:
 
 ```text
 Make one 1:1 product photograph of the hand-cream tube in the supplied product reference, fully visible on a clean white background. Preserve the tube's shape and proportions, pale cream body, dark brown bottom cap, front print layout, and the visible “SORA HAND CREAM” wording. Show the known front face without inventing a rear panel or changing the closed cap state.
@@ -38,7 +42,7 @@ Make one 1:1 product photograph of the hand-cream tube in the supplied product r
 Position the whole upright tube with enough room around its outline for a clean product presentation. Use broad, gentle directional light to reveal the matte-coated body, and a modest contact shadow beneath the cap. Keep the package colors and front print readable, with no strong glare over the label. The photograph should communicate the product's appearance directly, without the reserved headline area from the previous banner layout.
 ```
 
-White background and no headline region belong to this revised task. A requested colored background simply changes the relevant wording; this example does not ban color.
+White background and no headline region belong to this revised task. A requested colored background changes the relevant wording; this example does not ban color.
 
 ## Example 2: Glass material ad, then an unoccupied usage scene
 
@@ -46,21 +50,21 @@ White background and no headline region belong to this revised task. A requested
 
 Brief: "Make a vertical 4:5 ad for this fragrance bottle emphasizing glass. Use the real product, retain the label and add no efficacy claims."
 
-Assume the front reference confirms transparent pale-green glass, rounded rectangular form, dark cylindrical cap, visible pale-gold liquid and a small paper label. User information confirms glass. Reverse side and spray internals are unknown. Nothing establishes waterproofing, ingredients or scent.
+Assume the front reference confirms transparent pale-green glass, rounded rectangular form, dark cylindrical cap, a small amount of visible pale-gold liquid and a small paper label. User information confirms glass. Reverse side and spray internals are unknown. Nothing establishes waterproofing, ingredients or scent.
 
-### Plan and prompt
+### Plan and full prompt
 
-Preserve the real bottle rather than designing a fantasy vessel. A bright side/back area separates glass edges, broad reflections describe curves and controlled front light retains label readability. Use a stable support without automatically adding water, internal scenery or condensation for a "premium" image.
+A bright side/back area separates glass edges, broad reflections describe curves and controlled front light retains label readability. Stable support and contact shadows establish placement.
 
 ```text
 Create one 4:5 fragrance product photograph using the supplied bottle as the product reference. Preserve its rounded rectangular silhouette, clear pale-green glass, dark cylindrical closed cap, visible pale-gold liquid level, and the front paper label with its original lettering and placement. Keep the known front view; do not invent the reverse side or internal spray mechanism.
 
 Place the bottle upright on a restrained, neutral-toned surface. Use a bright, broad area behind and slightly to the left of the bottle so its transparent edges separate from the background. Add a controlled soft front fill that keeps the paper label readable, with shaped reflections along the bottle's curved edges rather than a white patch covering the print. Show a believable contact shadow at the base and preserve the bottle's actual green tint and the liquid's visible appearance.
 
-Frame the full bottle prominently while leaving a little breathing room around its silhouette. The material relationship between glass, liquid, cap, and paper is the visual focus. Keep the original product label; this brief asks for no additional advertising copy. Use only the real product shown by the reference, without replacing it with an imagined decorative bottle.
+Frame the full bottle prominently while leaving a little breathing room around its silhouette. The material relationship between glass, liquid, cap, and paper is the visual focus. Keep the original product label; do not add efficacy claims.
 ```
 
-Paragraphs establish retained features, light/material relationships and task scope. Optical vocabulary describes intent, not acceptance; inspect actual outputs.
+Paragraphs establish retained features, light/material relationships and task scope. "No efficacy claims" limits efficacy statements; it does not prohibit all advertising wording. Added copy still follows this task's requirements.
 
 ### Change to an unoccupied everyday scene
 

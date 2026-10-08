@@ -1,5 +1,19 @@
 # Sources and Boundaries
 
+## Current source revision: candidates 6 / 3 / 5
+
+The current update adapts the approved local product-photo-series v0.4-candidate.6, thumbnail-cover v0.3-candidate.3 and ugc-product-video v0.3-candidate.5 into English. It includes their required references and the shared execution contract. Standalone audio/API guides remain archived; recreation and portrait are outside this three-Skill upload.
+
+The new [source map](evidence/english-source-map-20261008-candidates-6-3-5.json) records actual Chinese source and English destination hashes. The earlier source map is retained unchanged as a historical record. Four full product-photo prompts are copied verbatim from the current source, including the narrower no-efficacy-claims instruction. The current UGC helper is copied byte for byte. Existing English shared execution is reused only after confirming that its Chinese source hash still matches the earlier translation source.
+
+Drinkware structure is merged into photo directions; the standalone drinkware page and duplicate creative-planning file are removed. Their former instructions are not reintroduced through an old file list. UGC delivers a complete product short, using native narration when suitable and separate narration/assembly only when needed. Synthetic demonstrations are not evidence of real product performance.
+
+Original local working files and the earlier English checkout are preserved. This revision updates GitHub source only, retains preview.4 and experimental status, and does not publish a Release, activate R2 or deploy production. Static/package checks and prior local assembly regression do not transfer behavior or creative-quality approval to the English adaptation.
+
+---
+
+## Earlier 2026-10-08 source record
+
 The original repository imported local Fish media/API workflows. Historical editions and prior immutable packages remain available in Git history and distribution storage.
 
 The 2026-10-08 main-branch update includes three English experimental workflows: product photos, covers and UGC product video, with required references and shared execution/optional creative planning. Standalone speech, voice and API guides are archived outside the package at the user's request. Recreation and portrait candidates are outside this upload.

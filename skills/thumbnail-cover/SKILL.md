@@ -5,25 +5,25 @@ description: |
   Provide text for cover analysis or title advice. General illustrations, the video itself and in-video cards use other workflows.
 ---
 
-# Thumbnail / Cover · v0.3-candidate.2
+# Thumbnail / Cover · v0.3-candidate.3
 
-Status: experimental candidate. Limited comparisons exist, but complete behavior and artifact acceptance remains pending. Identity fidelity and consistency across images are not guaranteed. The English adaptation has not undergone a new behavior or media comparison.
+Status: experimental candidate. Behavior and artifact acceptance remain pending. Identity fidelity and consistency across images are not guaranteed.
 
 ## Load only what the task needs
 
-Follow the [shared execution contract](../shared/core-skeleton.md) for authorization, idempotent submission, original-job queries, inspection and delivery. Discover current model parameters and prices from Fish tools. Keep creative decisions separate from interface settings.
+Follow the [shared execution contract](../shared/core-skeleton.md) for paid execution and records. Discover current model parameters and prices from Fish tools.
 
-A short request can directly yield one clear concept. Read [creative planning](../shared/creative-planning.md) when content facts, multiple user choices or complex relationships need organizing. Read relevant [thumbnail craft](references/thumbnail-craft.md) sections for concepts, references, variations, split frames or local editing. Simple tasks need not load every module.
+A short request can directly yield one clear concept. Read relevant [thumbnail craft](references/thumbnail-craft.md) sections when finding direction, analyzing references, making variations, split frames or local edits.
 
 ## Choose the image before writing the prompt
 
-Extract content facts, use, ratio, count and text requirements from the existing brief. Ask only when a gap changes the result or execution. Without platform clues, a single 16:9 image may be an overridable default; state it briefly. Do not require a complete professional brief.
+Extract content facts, use, ratio, count and text requirements from the existing brief. Ask only when a gap changes the result or execution. Without platform clues, a single 16:9 image may be the default; state it briefly. Do not require a complete professional brief.
 
 Decide the immediately recognizable subject and principal visual relationship. Select viewpoint, emotion, setting and supporting elements to express it. Exaggeration needs content support; do not invent video outcomes, progress or endorsements. Develop one clear concept for simple requests. Offer meaningfully different alternatives when the user wants options.
 
-Write the selected scene as "subject and distinguishing features → relationship and composition → necessary text and retained features → useful style details." Express each fact once; remove conflicts and modifiers that do not change expected output. Do not print a mandatory planning trace. Show only decisions, necessary assumptions and the final plan the user needs.
+Write the selected scene as "subject and distinguishing features → relationship and composition → necessary text and retained features → useful style details." Show only options the user needs to decide, necessary assumptions and the final plan.
 
-Use references by role: style for style, composition for relationships. Request appearance references and check fidelity when reconstructing a specific real person or object. Fictional people do not require a real-person photo. Explain achievable scope when inputs are missing; do not promise unsupported identity reconstruction.
+Use references by role: style for style, composition for relationships. Request appearance references and check fidelity when reconstructing a specific person or real object. Fictional people do not require a real-person photo. Explain achievable scope when inputs are missing; do not promise unsupported identity reconstruction.
 
 ## Text strategy
 
@@ -41,4 +41,4 @@ Deliver images, actual prompt, parameters, costs and unresolved items. Save deta
 
 ## Scope of defaults
 
-Explicit user choices override aesthetic defaults, which only fill unspecified parts. Viewpoint, saturation, colors, materials, metaphors and element count depend on the task. A single artwork critique is not a global ban. Before promoting a method, record scope, counterexamples and validation status. Explain and resolve factual, material-permission or budget conflicts.
+Explicit user choices take priority; defaults only fill unspecified parts. Viewpoint, color, materials, metaphors and element count depend on the task. Keep a single artwork critique as a case observation. Explain and resolve factual, material-permission or budget conflicts.

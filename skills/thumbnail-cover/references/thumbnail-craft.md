@@ -1,87 +1,59 @@
-# Thumbnail Craft · v0.2-candidate.2
+# Thumbnail Craft · v0.2-candidate.3
 
-Read relevant sections: A concepts, B prompt organization, C variations, D references, E local edits, F split frames. These are options, not required steps.
+Read relevant sections: A concepts, B variations, C references, D local edits, E split frames.
 
-## A. Concepts when direction is needed
+## A. Choose a visual relationship from the content
 
-**Concept selection:** Express a question or visual relationship related to the content. Develop one clear concept for a simple request. Offer a few meaningfully different choices when requested. Compare content facts, user goal, subject recognition and small-size legibility. Exaggerate without misrepresenting the content.
+Find the relationship in the content that matters most at a glance, then choose how to express it. Follow an existing user direction; when comparing concepts, make their main relationships different.
 
-**Visual choices:** Establish the main relationship, then supporting elements. Full forms, cutaways, macro views, surreal scale, warm/cool contrast and saturation have valid uses depending on the brief, facts and display size. Material descriptions come from actual objects or fictional settings; plastic, leather and metal have no universal prohibition. Record a particular image's palette, lighting, visual flow or element-count critique as a case observation.
+| What the content expresses | Selection method | Put it into the image |
+|---|---|---|
+| A state change or process | Before/after or stages | Choose supported states or key stages from the content. Keep scale and viewpoint comparable and emphasize the part that changes. Read E when the selected plan uses panels. |
+| Suspense or the result of an action | Freeze a key moment | Choose preparation, action or result according to what best explains the topic. Show contact and relevant parts; a source video may supply a real frame. |
+| A person's reaction to the topic | Portrait or action relationship | Direct expression, gaze and posture toward the relevant object. Match the reaction to the content's emotion or question; handle specified identity under the entrypoint. |
+| A mechanism, small structure or location | Diagram, cutaway, macro or map | Choose a view explaining the target relationship and necessary adjacent structure. Real interiors need a source; fictional diagrams follow their setting. |
+| A product answers the title's question | Product and use relationship | Preserve distinguishing features and use setting or action to explain use. Borrow product-photography fidelity and lighting methods as needed for real products. |
+| Scale, disparity or environment | Repetition, scale contrast or landscape | Use a reference object or clear size relationship to express disparity. Give the environment enough frame space when it is the topic; subject size serves the information. |
 
-**Viewpoint and drafts:** Eye-level views often make real settings recognizable. Cutaways, macro, space views and interiors can explain mechanisms or small-scale relationships. Follow the brief rather than blocking user choices based on old preferences. Low-resolution concept drafts can help test direction but add a generation; use only within authorization and attempt limits, not as an automatic prerequisite.
+Reduce the chosen relationship to the actual display size and check that both subject and relationship remain readable. When supporting elements hide important parts, adjust position, size or contrast, or remove them. Saturation alone cannot fix an unclear relationship. Text supplements information the image does not express; use the entrypoint's text strategy.
 
-| Concept | Implementation |
-|---|---|
-| Before / after | Split frame showing two supported states of the same subject. |
-| Social UI | Chat bubbles or rating cards expressing interaction; handle wording/branding from actual sources, without fake real reviews. |
-| Three-stage progress | Start, intermediate and result supported by content. |
-| Actual screenshot | Use a real source-video frame rather than generation when suitable. |
-| Staged portrait | Person, expression and background express the topic. Specific identities need references and inspection; fictional people follow their setting. |
-| Staged action | Freeze a suspenseful ongoing action without crowding the frame. |
-| Day-N badge | State a real day or milestone, not invented progress. |
-| Diagram | Explain relationships with diagrams, curves or charts without conflicting photographic demands. |
-| Landscape | Environment is primary; a smaller subject can sit near a third line. |
-| Map / aerial | Map frame and highlighted route or marker. |
-| Product | Product is the subject; product-photography methods may assist. The product can answer the title's question. |
-| Added text | Annotation or continuation of a title, with arrows/words as needed. |
-| Repeated objects | Many identical objects with a scale reference. |
-| Scale contrast | Deliberate large/small contrast. |
-| News bar | Short factual news caption, handling brand sources without fabricated media endorsement. |
-| Amplified reality | Enlarge a topic-relevant element; inspect hierarchy and factual accuracy. Element count follows the plan. |
+Viewpoint, lighting, color and materials serve the chosen relationship. Low-resolution concept drafts are optional when comparison is needed and spending permits; they still consume a generation.
 
-## B. Organize the chosen scene into a prompt
+## B. Make variations useful to compare
 
-These eleven blocks are a planning checklist, not a mandatory output template. Begin with a short concept, then select relevant fields. State facts once. Check conflicts, hierarchy and necessary constraints; remove ineffective filler. If tools cannot meet the request, explain limits and alternatives rather than rewriting the goal with historical model dialect rules.
+Choose changes for the user's decision: whether an expression better matches the content, a close view makes the subject easier to recognize, or a wide view explains the setting. Express a person's emotion through visible facial and posture changes; without people, use action, space or color.
 
-| Block | Content and scope |
-|---|---|
-| Deliverable | Image type, ratio and split layout if relevant. User-specified ratio matters; optional style words need a purpose. |
-| Scene brief | Confirmed topic and facts when useful; avoid duplication. |
-| Text | Whether added text is needed, exact wording, placement and method under the main Skill. |
-| Subject | Identity, position, relative size and distinguishing features when present. |
-| Props | Objects/effects only when they explain the concept. |
-| Logo | User-provided, authorized brand material and relevant fidelity requirements. |
-| Place | Time, location and mood when useful. |
-| Composition | Hierarchy, spatial relationships and readable information flow; thirds are optional. |
-| Background | Color, texture, blur and space according to style and legibility. |
-| Lighting | Source, direction, softness and separation when they improve recognition or appearance. |
-| Color | Relationships, exposure and contrast compatible with style and content. |
+Change one clear dimension at a time where practical, retaining other main relationships so the differences can be explained. Count and all attempts follow batch authorization and tool capabilities.
 
-Defaults fill only unspecified fields. A single 16:9 image may be a cover default; emotion, saturation, contrasting colors, vignette and viewpoint do not become global requirements from examples. Adopt explicit choices. Explain consequential tradeoffs rather than printing every default.
+## C. Analyze reference covers
 
-## C. Emotion and viewpoint variations
+Identify whether the user borrows subject, identity, style or composition. Then find the relationships that realize it: subject size/position, gaze or action direction, depth, light/dark separation, text region and panel layout. Translate these relationships to this task's content; submit references using current tool roles.
 
-When a person and expression variants are relevant, choose visible expressions such as surprise, delight, fear, confusion, focus, pride, calm, disgust, anger or laughter. Scenes, color or action can express mood without people; other user-requested emotions are valid.
+For example, borrowing only "a person looking toward an enlarged object on the right" means using this task's person/object while retaining gaze and size relationships. It does not automatically inherit the reference's brand, identity or split layout.
 
-Viewpoint options include the chosen angle, low angle, close view or wider environment. Each must support recognition, proportions and purpose. State the total batch count and stay within authorization and actual tool limits. Changing one clear dimension at a time helps comparison.
+## D. Local edits: target, retained features and inspection
 
-## D. Analyze reference covers
-
-Record useful fields such as brief, subject, elements, place, composition, background, split layout, people and expressions. Add/remove fields for actual content. Identify which reference dimension the user wants: style, composition, subject or identity. Submission follows user authorization and available input roles. Do not assume references are unusable or treat ordinary style examples as face-identity locks.
-
-## E. Local edits: target, retained features and inspection
-
-Use current editing/masking capability and the selected source version. These instructions express intent, not guaranteed pixel preservation; state region and target, then inspect retained features.
+Use the selected source version and current editing/masking path. State the region and target; these expressions do not guarantee pixel preservation. Inspect retained features afterward.
 
 1. **Expression:** Change to the requested emotion while retaining identity, hair, clothing, pose, background and layout. State distinguishing identity features and inspect facial changes.
-2. **Background:** Replace the scene while retaining subject identity, shape, position and foreground. Specify whether subject illumination can change; permit necessary local contact shadows or reflections for integration.
+2. **Background:** Replace the scene while retaining subject identity, shape, position and foreground. Specify whether subject illumination can change; permit necessary contact-shadow or reflection changes for integration.
 3. **Background palette:** Change colors while retaining objects, structure, depth and subject. State and inspect retained subject light when needed.
 4. **Rim light:** Change contour lighting only, listing retained key light, background, pose and layout.
 5. **Props:** Specify object, position and retained features; allow local shadow/occlusion changes needed for contact.
 
-Save originals and revisions. Use acceptable versions as later inputs; return to a better version after drift. Diagnose region, sources and capability when repeated edits fail. New concepts or regeneration require alignment with the user's goal and spending; a fixed failure count does not automatically invalidate the plan.
+Save originals and revisions. Use acceptable versions as later inputs; return to a better version after drift. After repeated failure, check region, sources and capability before choosing another revision under the task's goal and authorization.
 
-## F. Split frames
+## E. Split frames
 
-**Use when:** The user requests panels or explicitly borrows a reference's split layout. Borrowing style alone does not inherit panels; two opposing subjects can share one continuous space.
+**Use when:** The user requests panels, explicitly borrows a reference's split layout, or the selected plan needs panels. Borrowing style alone does not inherit panels; two opposing subjects can share one continuous space.
 
 **Layout:** Choose count and arrangement for comparison and reading order. Two panels can be horizontal or vertical; larger sets can use strips or grids within the actual ratio and display size.
 
-**Prompt:** State ratio, count, arrangement, panel contents and shared visual relationships. Divider, lighting, palette and text follow this plan.
+**Prompt:** State ratio, count, arrangement, panel contents and shared visual relationships. Divider, lighting, color and text follow this plan.
 
 - Parallel: different aspects of one story; state each panel.
-- Before / after: supported states and their positions.
+- Before/after: supported states and positions that make the change comparable.
 - Comparison: objects and visual weight; antagonistic emotion depends on the topic.
 - Custom: follow the user's panel contents and arrangement.
 
-**Text by source:** Added titles, captions and panel labels follow the request. When none are requested, specify no added title/caption/panel labels. Original package, clothing or sign lettering is a separate preservation item; generic `No labels` or `No text` can erase it. Added text needs exact wording and layout; removal needs a scope. Keep requested panel contents visually coherent.
+Write requested added titles, captions or panel labels verbatim with their layout. List original lettering and marks as separate retained features. When no additions are requested, "no added title, caption or panel labels" avoids a generic `No text` that deletes original lettering.

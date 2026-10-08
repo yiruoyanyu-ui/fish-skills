@@ -1,3 +1,20 @@
+# 0.1.0-preview.4 — Source revision for candidates 6 / 3 / 5
+
+Source-only update on 2026-10-08. No Release, R2 activation or production deployment is performed.
+
+- Synchronize product photos v0.4-candidate.6, covers v0.3-candidate.3 and UGC v0.3-candidate.5 into English.
+- Merge drinkware structure into photo directions and remove the separate drinkware page and duplicate creative planning.
+- Replace the cover concept catalog with selection methods; retain local edits and split-frame guidance.
+- Preserve four current product worked prompts verbatim, without broadening a no-efficacy-claims brief into a ban on all advertising wording.
+- Keep complete product shorts as the UGC deliverable; native narration or optional separate-track assembly follows the task. Copy the updated assembly helper byte for byte, including explicit offset rejection for keep/lower.
+- Add a new source hash map while preserving the earlier map and historical notes.
+- Retain preview.4, preview channel and experimental status. English behavior and artifact acceptance remain pending.
+- Recreation and portrait remain outside this three-Skill source update.
+
+---
+
+## Earlier source notes
+
 # 0.1.0-preview.4 — Three English experimental creative workflows
 
 Source update on 2026-10-08; no Release or production channel activation in this action.
