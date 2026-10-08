@@ -1,56 +1,39 @@
-# Shared Media Execution Contract
+# Shared Fish Media Execution Contract · v0.5-draft
 
-This contract is shared by product photos, thumbnails and UGC. Changes affect all three workflows. Skill text is guidance; the current user's instructions and authorization take precedence.
+This file covers paid execution, recovery and delivery. Creative plans, references, clarification, text, people, materials and colors follow the user's brief and the relevant Skill. Skills may read this entire file without filtering inherited visual rules. The filename remains compatible with existing links. Complete behavior acceptance across entrypoints is pending.
 
-## Workflow
+## Execution order
 
-Resolve missing content → upload references → optional cleanup → assemble the prompt → estimate → apply spending authorization → submit once with an idempotency key → poll the original ID → retrieve results and billing → inspect → deliver.
+```text
+Identify deliverable and necessary inputs → check current tool capabilities → plan and finalize prompt
+→ estimate → apply authorization → submit → query original job → retrieve → inspect → deliver
+```
 
-The Agent calls the connected execution tools directly. Do not assume another Agent inherits MCP authorization. If a tool or command is denied, do not loop on the same request. Use a permitted equivalent when available and disclose checks that remain unperformed.
+Current Fish MCP responses define inputs, upload procedures, parameters, prices and states; do not duplicate interface manuals here. Complete necessary uploads before estimating the actual request. Paid preparation, generation and processing belong in the batch plan.
 
-## Missing information
+## Authorization
 
-| Missing item | Action |
+- Estimate before submitting, with the same workspace, model, inputs, prompt and price-affecting parameters. Re-estimate a changed request.
+- Explain batch cost, count and attempt limit. Proceed under existing applicable authorization; obtain batch authorization when none applies.
+- Sum multi-step estimates. Successful and failed attempts both consume the attempt allowance. Price changes within authorized spending and attempts may proceed; exceeding either requires additional authorization.
+- Save a fixed request identifier using supported idempotency. Query the original request/job after an uncertain submission. A new identifier and resubmission are not recovery; do not automatically add paid attempts.
+
+## Query and inspect
+
+Save the original job ID, query to terminal status under the current contract, and retrieve results. Verify job success, file existence, task satisfaction and actual billing separately.
+
+Visual/audio inspection follows the Skill and brief. Mark checks "not checked" or "cannot judge" when capability, sources or legibility are insufficient. Separate visible observations, aesthetic preference and unverified explanations. Job success and model scores do not replace artifact acceptance.
+
+## Partial delivery and recovery
+
+| Situation | Action |
 |---|---|
-| Reference, quantity, purpose or scene selection | Ask together, at most three concise questions with useful choices |
-| Lighting, composition, material or style defaults | Resolve from the recipe and the actual reference; disclose defaults |
-| Recipe constraints | Include applicable rules; keep category-specific restrictions in their category file |
+| Required input missing or upload failed | Explain the gap and seek materials or an acceptable alternative. Do not promise reconstruction of unsupported objects or identities. |
+| Estimate failed, unsupported capability or authorization exceeded | Pause paid execution and explain the cause and feasible options. |
+| Submission timed out or status unclear | Query the original request/job; save state and ID. Report pending recovery when unresolved. |
+| Generation failed or output inadequate | Retain record and actual cost. Explain targeted revisions within existing authorization and count their attempts; otherwise deliver the gap. |
+| Processing failed or interrupted | Preserve base output before processing. Deliver available parts and incomplete items, without presenting base/separate materials as the complete deliverable. |
 
-Without a reference, unattended product generation stops unless the user explicitly accepts text-only fallback. Disclose that such generation cannot guarantee product identity.
+## Delivery record
 
-## Spending authorization
-
-Estimate using the exact workspace, model, inputs and parameters that will be submitted.
-
-- For an interactive task without prior spending approval, show the estimate and obtain approval before submission.
-- With existing explicit spending authorization, continue within its scope and limit. Explicit authorization without a budget cap is not an authorization to expand the requested deliverables.
-- Without applicable authorization, do not submit.
-
-Estimate scenes separately and explain unit prices and the expected total. If a new quote falls outside the approved scope, obtain the needed authorization. Report partial failures and charges separately. Never treat Skill retrieval as payment approval.
-
-## Shared visual defaults
-
-Default to no text, letters, numbers, logos or watermarks, except where the recipe's explicit text policy applies. Do not add objects, people, brands or copy that the request does not imply.
-
-Do not promote a thermos-specific observation, such as "no steam", into a universal rule. A requested coffee scene may legitimately include steam. The recipe owns category restrictions; a model dialect translates them without inventing new ones.
-
-## Quality checks
-
-- Metadata: terminal status, output dimensions, files/hashes when available and charges/refunds.
-- Prompt: requested constraints are present in the final submitted prompt.
-- Pixels: inspect the actual output if vision is available; otherwise mark visual QC unperformed and request user review.
-
-A successful generation status does not prove visual quality, product identity or user acceptance.
-
-## Delivery and recovery
-
-Provide outputs, final prompts, parameters, task IDs, charges/refunds and decisions identified as user input, resolved defaults or recipe constraints.
-
-| Failure | Response |
-|---|---|
-| Missing unapproved reference | Report blocker and required material; do not generate |
-| Upload failed | Report the failed step and object key; keep signed URLs in authorized private context |
-| Quote failed or exceeded authorization | Stop before submission and explain |
-| Generation slow or submission uncertain | Query the original ID or idempotency record; do not auto-submit again |
-| One scene violates requirements | Deliver valid scenes and identify failed ones separately |
-| Overlay, crop or assembly unfinished | Save the preliminary deliverable and base media first; deliver base output and processing script with unfinished status |
+Deliver results, purpose, actual prompt, reference roles, model/settings, job identifiers, all attempt states and actual costs. Distinguish user requirements from creative choices. Preserve raw and processed outputs. Mark unverified billing/refunds pending. Record durable asset identifiers/files rather than temporary upload credentials as long-term evidence.

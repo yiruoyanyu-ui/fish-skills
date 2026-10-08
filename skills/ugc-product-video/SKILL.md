@@ -1,45 +1,64 @@
 ---
 name: ugc-product-video
-description: Make a product-led short promotional video with voice-over from a real product reference and a specified duration. The evaluated scope is a faceless product video, not presenter reviews, unboxing, tutorials or try-on. Do not use to edit an existing video.
+description: |
+  Create faceless, product-led promotional shorts with voice-over from real product references, including demonstrations, shot planning, generation and audio/video assembly.
+  Hands or POV may demonstrate use. Presenter, Avatar and real-person identity continuity use other workflows.
+  Planning or script-only requests do not trigger generation. Silent displays and editing existing footage do not require this complete workflow.
 ---
 
-# UGC Product Video
+# UGC Product Video · v0.3-candidate.4
 
-**Validation:** the legacy record reports one complete Fish 10-second product-video run on 2026-10-04. It does not validate all durations, product categories, presenters or all six HF UGC formats. Original runtime evidence is not packaged in this release; see the validation inventory. This English revision has not undergone a new Agent execution test.
+Status: experimental. Use concrete demonstrations and segmented narration with the product as the protagonist. Historical Fish evidence covered one 10-second path, not presenter-led UGC or every format. Recent comparisons and independent text checks found product-fidelity and unsupported-claim failures; this candidate is not quality-approved.
 
-Read `../shared/core-skeleton.md`. This recipe adapts storyboard, voice-over budgeting and product intake concepts. It does not install HF cloud scripts or run an autonomous backend workflow.
+This candidate adds sentence-level narration source checks. The local assembly helper checks video/audio track durations and publishes completed files atomically. Behavior and artifact acceptance remain incomplete. The English adaptation has not undergone a new behavior or media comparison.
 
-## Execution platform and discovery
+## 1. Turn the product and goal into a script
 
-Use Fish execution tools when the task authorizes Fish credits. Use HF only if the user explicitly requests it and that connection is available; disclose the platform. If ambiguous, clarify once. Discover current models, reference roles, supported duration/resolution/audio parameters and prices before submission. Legacy observations are not current quotes.
+Extract product references, audience, purpose, duration, ratio, language, narration and sound preferences. Ask only consequential missing choices; adopt existing requirements. Photographic and editing details may use proposed defaults. Deliver a script when requested; obtain needed materials or goals before making a complete video.
 
-The historical Fish path used a gpt-image-2 storyboard, a reference-video mode and separate TTS, followed by local assembly. Do not assume model IDs or a reference-video mode are currently available. A model that only accepts a start frame cannot execute the multi-reference storyboard recipe.
+Record visible product shape, parts, colors, surface appearance, real labels and demonstrated mechanisms for use across shots. Preserve surface condition without manufacturing imperfections. Distinguish background annotations from product print; preparation must not automatically erase branding. Hidden sides and dimensions need additional evidence. Selling points need user-provided or confirmed information; marketing language is not verified efficacy.
 
-## Workflow
+Define what process and benefit the viewer should see before selecting shots. "Introduce product → demonstrate one action → show result" is a starting option, not a mandatory pattern. Shot count, people and order follow the goal and action. Record each shot's purpose, action, framing, visible product face, source, estimated duration and narration. Purpose defines what to communicate, action provides visible evidence, and narration explains that action or supported features. Change the action or copy when the demonstration cannot support a claim. Keep cross-shot structure, lettering and color grounded in the same reference; mark unseen parts unknown.
 
-1. Gather a real product photo and duration, preferably together. Offer 10/15/30/45 seconds when a choice is needed. Do not invent or substitute a reference. Set technical defaults from current tool capabilities rather than interviewing the user about model internals.
-2. Write a canonical product description: visible mechanism, proportions relative to hands, visible faces, unknown features and treatment of promotional text/watermarks. Reuse it consistently. Avoid artificial perfection, but do not invent damage or redesign the product.
-3. Write a segmented voice-over. The historical Chinese 10-second case used approximately 20–32 characters; other languages need their own measured timing. Use visible details and supplied facts, never fabricated specifications.
-4. Create a four-panel storyboard in a 21:9 canvas with four vertical slots, if supported. Use the cleaned product reference. Plan reveal, demonstration A, demonstration B and outcome. Specify visible product angles, realistic scale, shot labels and concrete hand actions; prohibit extra hands, text and watermarks. Inspect equal panels, seams and missing placeholders. One regeneration is allowed only within user authorization; otherwise disclose a fallback.
-5. Optional visual cleanup: skip and disclose when the board is only a reference and passes inspection. If used directly or visibly artificial, perform a targeted edit. Historical guidance allowed at most two edits; this is a limit, not automatic spending permission.
-6. Generate video using the storyboard and clean product as **references**, not as the start frame. Write explicit shot windows, framing, action and hard cuts. Feeding a whole board as the starting frame can leave the board visible in the resulting video.
-7. Generate separate voice-over segments using an available voice suited to the brief. Legacy voice IDs are not portable defaults; query or validate the current catalog. Disclose any substituted voice.
-8. Detect actual scene cuts with ffmpeg rather than trusting planned windows. Align each voice segment with `adelay`; if it exceeds the shot window, use `atempo` up to 1.3 rather than truncating speech. Mix with `amix` and normalize=0; aim for no more than one second of trailing silence. If fitting needs a greater speed change, deliver video and narration separately.
-9. Inspect extracted frames for shot structure, product consistency, text/watermarks and hands. Check cut count and duration within approximately 0.3 seconds of the selected target. Report listening review separately; user confirmation of voice quality is not implied by a successful tool response. Do not enter repeated environment-installation attempts merely to manufacture a QC result.
-10. Save a preliminary delivery record before assembly. Final delivery includes media URLs/files, prompts, original task IDs, actual costs, platform, cut timings, speed adjustments, voice selection and any unfinished processing.
+Read [creative planning](../shared/creative-planning.md) for complex plans; short requests can use a compact shot table. Plan shots and copy before mapping tool parameters. Model duration options are not the creative structure.
 
-## Historical duration planning
+Segment narration by shot purpose. After writing, check each sentence's basis: user-provided facts, visible material or what the video actually demonstrates. A product photo supports appearance, visible components and readable labels, not inferred grip comfort, performance, durability, efficacy or discounts. Explicit user-provided facts may be used with their source recorded. Rewrite unsupported claims as observable features or actions, asking only if the missing fact materially affects the plan. Separate creative descriptions from factual claims; "promotional" does not authorize invented offers or performance promises. Adjust copy by actual speaking speed and recorded duration, not a universal character count.
 
-| Duration | Boards | Planned segments |
-|---|---|---|
-| 4–15 seconds | 1 | Full length |
-| 16–19 seconds | 2 | Balanced segments, each at least 4 seconds |
-| 20–30 seconds | 2 | 15 seconds plus remainder |
-| 31–45 seconds | 3 | 15, 15, remainder |
-| 46–60 seconds | 4 | Approximately 15 each |
+## 2. Choose the reference path
 
-Only the single 10-second case is reported as tested. The table is planning guidance, not verified engine support.
+Check current Fish support for input roles, reference count, duration, ratio and audio before choosing production:
 
-## Recovery
+- **Multi-image / storyboard references:** Use a storyboard to express shot order only when explicitly supported. A four-panel board is optional. Layout follows shot count and input requirements; inspect product and action clarity.
+- **Per-shot generation and assembly:** When storyboard references are unsupported or shot-level control is needed, use individual references and available editing tools. Explain extra materials, task count and cost first.
 
-Poll the original task when generation is slow or uncertain; do not create a second paid submission. If two authorized storyboard attempts fail inspection, offer a disclosed single-shot fallback. With native generated audio, a changed script may require full regeneration: explain the new operation and obtain applicable authorization before spending.
+A complete collage is not a suitable first frame for an intended single-shot image. Use a single-shot keyframe for a first-frame path. Storyboard input does not guarantee exact cuts or timings. Verify actual input roles rather than mixing fields from different models.
+
+Prepare references only when a specific structural, hand or action error affects subsequent generation. Editing attempts count toward the authorized limit. A vague "AI look" is not an automatic extra paid edit.
+
+## 3. Generate and execute
+
+Each video prompt describes shot action, spatial relationship, product features to retain and reference roles. Continuous multi-shot paths also state intended order and transitions. Check hand count and contact against the actual action. Branding, image text and subtitles follow the task. If the tool cannot accept the input combination, explain the gap and a feasible alternative.
+
+Use the currently connected Fish environment. Do not infer a platform from budget units or switch to production/external services by default. Models, voices, settings and prices follow current tools and estimates. Internal narration is a video dependency, not a restored standalone audio Skill.
+
+Follow the [shared execution contract](../shared/core-skeleton.md) for spending, idempotency, original-job queries, inspection disclosure and delivery. Budget preparation, video, narration, editing and revisions as one batch with attempt limits. Use applicable existing authorization. Query the original job after failure or an uncertain submission. Shared dependency changes have not passed complete behavior and artifact acceptance.
+
+## 4. Segmented narration and audio/video assembly
+
+Consider separate tracks when copy or voice needs independent editing. Check whether native audio supports later changes. Choose voice for the user's preference, language and expression; briefly state an unspecified default.
+
+1. Save narration segments and their shot mapping, and measure each recording's actual duration.
+2. Watch the generated video to establish real shot boundaries. Prefer an existing editing timeline. `ffmpeg` scene detection can assist, but reject false cuts from flashes or movement.
+3. Align narration with relevant shots and actions. Shorten copy or adjust shots when audio is too long. If changing speed, listen for intelligibility and tone; no `atempo` value is a universally imperceptible threshold. Do not cut off a sentence.
+4. Listen to original audio. Keep it if it already satisfies the brief. When new narration duplicates existing speech, replace or separate speech; merely lowering volume does not remove duplication. Retain ambient sound according to the task.
+5. For local assembly, read the [executable example](references/assembly-example.md) and use its helper or available editing tools. Protect raw footage, measure the last sentence and final duration, and adjust copy/shots before overrunning. Freeze the tail only when explicitly permitted. Subtitles are optional and user choices override defaults. Watch and listen to the assembled output; file creation alone is not acceptance.
+
+## 5. Inspect, revise and deliver
+
+Watch the complete video for product consistency, action/narration alignment, requested shots, plausible contact and hands, lettering and sound. N consecutive hard-cut shots normally have N−1 internal cuts; storyboard panel count is not observed shot count. Check long takes and transitions according to their actual structure. Duration tolerance follows the specific deliverable, not a universal ±0.3 seconds.
+
+Use available inspection tools. Disclose missing checks when a tool is unavailable instead of pointless environment probing or repeated installations. Listen when possible; otherwise explicitly leave audio review pending rather than claiming acceptance.
+
+Target revisions at concrete defects within the batch budget and attempt allowance. If incomplete, deliver useful materials and specific gaps. A single demonstration shot or separate picture/narration files are not the requested finished video. New paid alternatives must follow current authorization.
+
+Deliver video, source materials, script/shot plan, actual prompts/calls, model/parameters, costs and unresolved issues. Distinguish raw generation from postprocessed output. Save base results and status before processing so interruptions do not destroy deliverable work.

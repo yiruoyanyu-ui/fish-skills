@@ -1,54 +1,24 @@
 {
   "schema_version": 1,
-  "version": "0.1.0-preview.3",
+  "version": "0.1.0-preview.4",
   "channel": "preview",
   "skills": [
     {
-      "id": "fish-api-asr",
-      "entry": "skills/fish-api-asr/SKILL.md",
-      "description": "Transcribe recorded audio with the Fish Audio REST API, including timestamps and speaker turns. Use for transcription code, alignment and ASR troubleshooting. Read fish-api-setup first.",
-      "status": "experimental"
-    },
-    {
-      "id": "fish-api-setup",
-      "entry": "skills/fish-api-setup/SKILL.md",
-      "description": "Configure and check a Fish Audio REST API key, API wallet, concurrency and billing. Use before the other fish-api Skills or when debugging authentication and credit errors. For developers, not OAuth MCP setup.",
-      "status": "experimental"
-    },
-    {
-      "id": "fish-api-tts",
-      "entry": "skills/fish-api-tts/SKILL.md",
-      "description": "Generate speech with the Fish Audio REST API, including voice IDs, dialogue, reference audio, SSE alignment and live WebSocket examples. Use for developer integration and TTS debugging. Read fish-api-setup first.",
-      "status": "experimental"
-    },
-    {
-      "id": "fish-api-voice-design",
-      "entry": "skills/fish-api-voice-design/SKILL.md",
-      "description": "Design a new voice from a written description using the Fish Audio REST API. Use to generate audition candidates and optionally persist an authorized candidate as a reusable voice. Read fish-api-setup first.",
-      "status": "experimental"
-    },
-    {
-      "id": "fish-api-voices",
-      "entry": "skills/fish-api-voices/SKILL.md",
-      "description": "List, inspect, create and delete Fish Audio voice models through REST. Use to obtain a TTS reference_id or manage an authorized private voice. Read fish-api-setup first.",
-      "status": "experimental"
-    },
-    {
       "id": "product-photo-series",
       "entry": "skills/product-photo-series/SKILL.md",
-      "description": "Make a coordinated square product photo series from a reference photo of drinkware or a thermos. Use for studio, tabletop and detail product images. Other product categories are outside the evaluated scope. Do not use for videos or general illustration.",
+      "description": "Create studio, usage-scene, detail or coordinated commercial product images from product references, or edit existing product photos. Use for product photography, ecommerce hero images, contextual shots and detail close-ups. Planning or critique alone does not trigger generation. Real-product fidelity requires reference photos; text-only briefs must explicitly accept concept images rather than exact reconstruction.",
       "status": "experimental"
     },
     {
       "id": "thumbnail-cover",
       "entry": "skills/thumbnail-cover/SKILL.md",
-      "description": "Create or edit a video/content thumbnail in landscape, portrait or square format. Use when the user requests an actual cover image. Analysis and title suggestions do not trigger generation. Existing tests cover limited concepts; portrait identity and general quality remain unverified.",
+      "description": "Create or edit content covers and video thumbnails in landscape, portrait or square format. Provide text for cover analysis or title advice. General illustrations, the video itself and in-video cards use other workflows.",
       "status": "experimental"
     },
     {
       "id": "ugc-product-video",
       "entry": "skills/ugc-product-video/SKILL.md",
-      "description": "Make a product-led short promotional video with voice-over from a real product reference and a specified duration. The evaluated scope is a faceless product video, not presenter reviews, unboxing, tutorials or try-on. Do not use to edit an existing video.",
+      "description": "Create faceless, product-led promotional shorts with voice-over from real product references, including demonstrations, shot planning, generation and audio/video assembly. Hands or POV may demonstrate use. Presenter, Avatar and real-person identity continuity use other workflows. Planning or script-only requests do not trigger generation. Silent displays and editing existing footage do not require this complete workflow.",
       "status": "experimental"
     }
   ]

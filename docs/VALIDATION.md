@@ -1,26 +1,25 @@
-# Validation Inventory
+# Current Validation and Limitations
 
-This inventory uses three different conclusions: a recorded execution case, a historical test claim, and newly checked package structure. They must not be merged into an "all Skills passed" statement.
+Updated 2026-10-08 for the three-Skill main-branch source update. This is an experimental source upload authorized by the user, not stable quality acceptance or activation of a production channel.
 
-| Skill | Evidence available during this pass | Release limitation |
+| Skill | Observations | Limits |
 |---|---|---|
-| fish-api-setup | Original real-key notes and key-check sample | Original run log not recovered |
-| fish-api-tts | Original notes claim eleven-case regression and listening review | Historical claim; new English text and SDK behavior not re-executed |
-| fish-api-asr | Original notes report short diarized audio and 95-second audio | Most formats/options and long durations not covered |
-| fish-api-voices | Original notes report create/read/delete/404 | No general slot/visibility coverage |
-| fish-api-voice-design | Original notes report design and persistence lifecycle | Optional parameters and invoice reconciliation incomplete |
-| product-photo-series | Four actual image jobs completed in a thermos case on 2026-10-06; outputs inspected and local ledger reconciled | Tabletop/studio too similar; exact geometry, other products and English revision unverified |
-| thumbnail-cover | Earlier limited real comparisons and reviewer feedback | Factual review, identity, broader concepts and independent acceptance incomplete |
-| ugc-product-video | Legacy Skill reports one complete Fish 10-second case on 2026-10-04 | Presenter formats, longer durations, other products and English revision unverified |
+| Product photos, candidate.5 | Earlier drinkware production/runtime evidence exists. This revision organizes shared dependencies. | Earlier candidate rejection remains historical; current content and broader categories are not quality-approved. |
+| Covers, candidate.2 | Coffee-opening and rainbow cover comparisons used ordinary short requests and three arms. Tested hard requirements were met; no meaningful hard-requirement advantage was established. | Two tasks and one generation per arm do not establish stable improvement, identity fidelity or click-through uplift. |
+| UGC, candidate.4 | Production generation, narration and assembly were executed. A packaging-opening comparison and targeted revisions had fidelity failures. Later independent candidate.4 text checks still invented unsupported material/connection facts. | Candidate.4 has not passed textual reliability or independent artifact acceptance. Full continuous viewing and listening review of assembled comparison videos remains pending. |
 
-The product case is summarized in [the sanitized execution evidence](evidence/product-photo-20261006.json). Its 5040 credits are from an isolated local test ledger, not an online wallet or upstream dollar invoice. A fixture account package was adjusted only in that isolated database. This is a runtime case, not a claim about every prompt rule.
+Controls were an Agent without the target Skill, a frozen pre-edit local workflow and a candidate. The Agent expanded ordinary user requests itself; a detailed no-Skill prompt is not a hand-authored expert answer. The local control snapshot is not certified as the deployed production version. Host planning and CLI planning used different Agents; do not pool them as one controlled model experiment. Within-arm conditions and all outputs were retained in the private evaluation workspace.
 
-The retained API prose was available in source commit f336be7693f585d7a31e20c51f22d4a983bb2736. It reports 11 PASS / 0 FAIL and references an original local runner. That runner was located, but no actual eleven-pass execution transcript was recovered in this pass. This limitation is intentional; do not manufacture or relabel a document-read output as a test run.
+The shared planning module is optional and has no demonstrated cross-Skill benefit yet. Mechanical assembly checks do not establish narration/action semantics or audio quality. References and model scores do not establish product fidelity without output inspection.
 
-## Withdrawn from the new catalog
+## English adaptation
 
-Media router, narration, explainer video and subtitle burning have no adequate scoped acceptance record for this release. Their source is preserved locally and in history, with no active entry/payload in this version. Removal does not make old releases inaccessible. Portrait experiments were never part of the published preview.
+Entry and reference prose is English. The four pre-existing English worked prompts and assembly helper were copied unchanged; surrounding guidance was adapted from the current Chinese drafts. The [source map](evidence/english-source-map-20261008.json) records source and destination hashes, not quality approval. English content has not undergone a fresh Agent behavior or paid media comparison.
 
-## Re-entry and promotion
+Package integrity, references and catalog checks are distinct from behavior and artifact acceptance. Every candidate remains `experimental` on the `preview` channel. No stable review is fabricated.
 
-For a future Skill, record its purpose, trigger/exclusion rules, actual inputs, mapped Fish tools and unsupported capabilities. Freeze a case and version, run the authorized workflow, retain request/task/output/cost records and perform appropriate output review. Publish as preview with that precise scope. Broader stable approval requires separately documented review; a copied workflow or a passing package check is insufficient.
+## Further acceptance
+
+Freeze exact entry/dependency hashes, tasks, materials, rubric, Agent, generation model, budget and attempt limits. Compare without/current/candidate, retain every result and failure, and review factual compliance separately from preferences. Cases used to change rules become development cases; use new independent cases for acceptance. Define task-specific benefit and release criteria before inspecting results. Do not turn individual failures into universal visual bans.
+
+Historical preview.3 API evidence remains available in Git history and immutable published versions. Removal from the current source does not retroactively revoke them.

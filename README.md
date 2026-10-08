@@ -1,64 +1,59 @@
 # Fish Skills
 
-Versioned Fish Audio API and media workflows, with read-only MCP retrieval of Markdown and reference files.
+Versioned creative workflows for Fish tools, with read-only MCP retrieval of Markdown and references.
 
-**Current preview: 0.1.0-preview.3 — eight English Skills.** The catalog retains five API guides and three media recipes with reported or case-level execution evidence. It does not claim all workflows are quality-approved. See the [validation inventory](docs/VALIDATION.md) before trying a Skill.
+**Current main-branch source: `0.1.0-preview.4`, three English experimental Skills.** This is a GitHub source update, not a GitHub Release, R2 channel activation or production Skill deployment. Existing clients using a published version still read that version. These candidates are available for inspection and experimentation, not certified as consistently better than their controls.
 
 ## Explore
 
-| Skill | Purpose | Evidence scope |
+| Skill | Purpose | Evidence and limits |
 |---|---|---|
-| [API setup](skills/fish-api-setup/SKILL.md) | Key and API wallet checks | Historical real-key notes; original regression log not recovered |
-| [TTS](skills/fish-api-tts/SKILL.md) | Speech, dialogue, reference cloning and alignment | Historical eleven-case regression claim; English revision not execution-tested |
-| [ASR](skills/fish-api-asr/SKILL.md) | Transcription, timestamps and speaker turns | Historical short clips and a 95-second recording |
-| [Voices](skills/fish-api-voices/SKILL.md) | Voice discovery and authorized lifecycle | Historical create/read/delete case |
-| [Voice design](skills/fish-api-voice-design/SKILL.md) | Audition candidates and persistence | Historical design and lifecycle observations |
-| [Product photos](skills/product-photo-series/SKILL.md) | Drinkware studio/tabletop/detail series | Thermos case tested; weak scene differentiation remains |
-| [Thumbnails](skills/thumbnail-cover/SKILL.md) | Concepts, cover rendering and edits | Limited real comparisons; identity/factual review incomplete |
-| [UGC product video](skills/ugc-product-video/SKILL.md) | Faceless product video and voice-over | One reported 10-second Fish case, not all HF UGC formats |
+| [Product photos](skills/product-photo-series/SKILL.md) | Studio, usage, detail and commercial product images | Historical drinkware cases; category-specific fidelity and current English adaptation need further acceptance. |
+| [Thumbnails / covers](skills/thumbnail-cover/SKILL.md) | Concepts, rendering, text and edits | Two recent short-brief tasks met tested hard requirements, with no demonstrated advantage over controls. |
+| [UGC product video](skills/ugc-product-video/SKILL.md) | Faceless product demonstrations, narration and assembly | Real production runs exist, but fidelity and unsupported-claim failures remain. Experimental, not quality-approved. |
 
-Narration, the media router, explainer video and subtitle burning have been removed from the current source/payload/catalog pending further evaluation. Previous immutable releases and Git history remain available; removal is not retroactive revocation. Portrait experiments in another local worktree are not part of this release.
+Standalone speech, voice and API guides are [archived](archive/2026-10-08-retired/README.md) and excluded from the current catalog/payload. Reference recreation remains under optimization outside this update. Portrait drafts are also outside this update.
 
-## Try without generating media
+## Structure
 
-Requires Git, Python 3.11+ and uv. Public GitHub Release reads need no R2 keys:
+`SKILL.md` contains task-specific decisions and workflow. Read `references/` only when the request needs them. [Shared execution](skills/shared/core-skeleton.md) covers spending, recovery and delivery; [creative planning](skills/shared/creative-planning.md) is optional for complex work. There are no inherited global visual bans or static model-dialect tables. User choices override creative defaults.
+
+```mermaid
+flowchart LR
+ A[User brief and materials] --> B[Task-specific plan]
+ B --> C[Read relevant methods]
+ C --> D[Current Fish capabilities and final prompt]
+ D --> E[Authorized generation and processing]
+ E --> F[Inspect artifacts and record costs]
+ F --> G[Scoped revision and independent acceptance]
+ G --> H[Content-bound release decision]
+```
+
+Media generation uses the Fish connection selected in the session. UGC's optional local assembly helper only processes existing footage; it does not call a local generation server.
+
+## Inspect without generating media
+
+Read the linked source files directly. For a committed checkout, build and inspect the versioned package locally:
 
 ```bash
 git clone https://github.com/yiruoyanyu-ui/fish-skills.git
 cd fish-skills
 uv sync --locked
-FISH_SKILLS_BACKEND=github \
-FISH_SKILLS_GITHUB_REPOSITORY=yiruoyanyu-ui/fish-skills \
-uv run --locked fish-skills read --version 0.1.0-preview.3 --skill product-photo-series
+uv run --locked fish-skills build
 ```
 
-[Colleague quickstart](docs/COLLEAGUE_QUICKSTART.md) explains MCP connection. Reading documents does not authorize or submit generation. Media execution requires a separately authorized Fish Audio MCP; REST examples require the user's API key and API wallet.
+This creates local package artifacts. It does not publish a Release, activate R2 or generate paid media. The [colleague quickstart](docs/COLLEAGUE_QUICKSTART.md) describes the reader; its explicit `0.1.0-preview.3` example reads historical published content, not this main-branch update.
 
-## Storage and execution
+## Distribution and maintenance
 
-```mermaid
-flowchart LR
- A[Edit English Skill and references] --> B[CI validation and package]
- B --> C[GitHub Release and private R2 fixed version]
- C --> D[Read-only Skills MCP]
- D --> E[Agent reads rules and required references]
- E --> F[Authorized Fish execution tools or REST]
- F --> G[Results, actual costs and scoped review]
-```
+GitHub stores source. Published GitHub Releases/R2 packages distribute immutable versions. The Skills MCP reads instructions; a separately connected Fish media MCP executes authorized operations. Reading a Skill does not install a script, grant spending authorization or prove media quality.
 
-GitHub is the source; R2 is version distribution; the MCP reader is the document entry point. The Agent orchestrates atomic operations. Retrieval does not install scripts, launch a backend Agent or prove generated-media quality.
+Edit relevant sources and references, update the catalog/version, commit and inspect CI. Publication is a separate manual action under Actions → Publish Skills. Stable publication requires genuine content-bound review evidence. Retain all attempts, failures and costs; keep optimization cases separate from independent acceptance. Translation changes content hashes and does not transfer quality approval automatically.
 
-## Maintain
-
-Modify `skills/<id>/SKILL.md` and references, update `release.json`, increment the version, commit and inspect CI. Publish preview using Actions → Publish Skills. Publish stable only with real review evidence bound to the payload digest. Do not invent approval to pass CI.
-
-The current publisher validates paths, JSON, references, sizes and common secret patterns, then uploads/read-checks fixed R2 content before activating the channel. Running tasks pin their original version; new tasks follow the channel after a 60-second pointer cache refresh. Published content is immutable.
-
-- [Validation and restrictions](docs/VALIDATION.md)
+- [Current validation and limitations](docs/VALIDATION.md)
+- [Sources and translation boundary](docs/SOURCE.md)
+- [Source update notes](docs/RELEASE_NOTES.md)
 - [MCP connection](docs/AGENT.md)
 - [CI and R2 setup](docs/SETUP.md)
-- [Sources and translation boundary](docs/SOURCE.md)
-- [Historical HF workflow adaptation map](docs/HF_WORKFLOW_MAP.md)
-- [Release notes](docs/RELEASE_NOTES.md)
 
-The repository is public. Publishing credentials and personal test material are not included. API examples contain multilingual test utterances; guide prose and catalog descriptions are English. The English revision has been structurally checked, not newly evaluated by a paid generation run.
+Credentials, private user material, temporary asset URLs and evaluation media are excluded from this source update.

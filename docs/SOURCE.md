@@ -1,13 +1,15 @@
 # Sources and Boundaries
 
-The original preview imported twelve local Fish media/API Skills and shared references. User media, keys, local client paths, evaluation outputs and old ZIP files were not included.
+The original repository imported local Fish media/API workflows. Historical editions and prior immutable packages remain available in Git history and distribution storage.
 
-The English 0.1.0-preview.3 edition retains eight entries: five API guides plus product photos, thumbnails and UGC product video. Four entries were removed from the new tree and payload: media router, narration, explainer video and subtitle burning. Original source is archived in the local workbench and Git history; prior immutable releases remain accessible.
+The 2026-10-08 main-branch update includes three English experimental workflows: product photos, covers and UGC product video, with required references and shared execution/optional creative planning. Standalone speech, voice and API guides are archived outside the package at the user's request. Recreation and portrait candidates are outside this upload.
 
-This is an English editorial adaptation, not a byte-for-byte translation or new paid evaluation. Historical static price/model/voice tables have been replaced by current-tool discovery guidance, while executable examples preserve their historical request structure. The shared contract now respects existing explicit user spending authorization, including an authorized task without a numeric cap; it does not authorize extra deliverables or retries.
+Current Chinese working drafts were translated and editorially adapted into English in an isolated checkout. Original Chinese working files and other sessions' uncommitted changes were preserved. The source map records both sets of hashes. Four English worked prompts and the assembly helper retain their original bytes/content. Changed prose has not been freshly evaluated by an Agent or paid generation run.
 
-Product and thumbnail prompt guidance was informed by historical HF workflow research, model-prompt references and limited local reviewer observations. The historical direct HF MCP catalog has twelve workflows; official GitHub Skills, CLI generation workflows, tools and presets are different inventories. See the separate historical adaptation map; it is not the Fish supported catalog.
+Historical HF workflow analysis, Flova planning responsibilities and Flora's public Skill organization informed the design. This update does not copy their backend runtime, claim access to hidden prompt enhancement or infer that Fish/HF output differences are caused by Skills. Their effects and backend boundaries require separate evidence. Shared planning explicitly distinguishes user facts, creative choices and overridable defaults. It does not add mandatory generation steps.
 
-API prose reported real-key tests and eleven regression passes on 2026-10-03. During this editorial pass, the original runner and claims were located, but the actual run log was not recovered. Do not describe that claim as newly reproduced proof. English-only sample messages are documentation/output changes, not another regression pass.
+Current schemas, model capability and prices are read from the selected Fish MCP. Static model-dialect tables and inherited global visual bans are removed. Existing user spending authorization is respected without expanding the requested deliverable or adding automatic retries.
 
-Scripts are reference source. MCP retrieval does not install dependencies, run a script or obtain spending approval. Multilingual spoken/transcription fixtures may remain in samples.
+All guide prose and catalog descriptions are English. Private evaluation media, credentials, temporary asset links, local client configuration and personal workbench paths are excluded. Scripts process existing material only; retrieval does not install dependencies or execute them. See current validation notes for known fidelity and unsupported-claim failures.
+
+This upload changes GitHub source only. Release publication and R2/production activation are separate operations.

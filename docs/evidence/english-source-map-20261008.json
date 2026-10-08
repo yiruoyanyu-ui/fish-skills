@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-08",
+  "source_version": "local working drafts",
+  "destination_version": "0.1.0-preview.4",
+  "status": "experimental source update; no quality certification",
+  "files": [
+    {
+      "path": "skills/product-photo-series/SKILL.md",
+      "source_sha256": "509cbd26ebfe6b9e631ed9fe2d9118da7b46523503403c4ee79a9287616cb08c",
+      "english_sha256": "25d702ff52aab4b86e26a141b78b4944626439a1b8cc1c4ff9708c2531ae4398",
+      "mode": "English editorial adaptation"
+    },
+    {
+      "path": "skills/product-photo-series/references/category-thermos.md",
+      "source_sha256": "42fa85a6ff371ef9235709b06e2510b9fbd380740e56854cc2bd31cd67abccbd",
+      "english_sha256": "1837d221f0ea5c31549f3fe9333d3ee88329820c19f71e05e24b32857a82c4bb",
+      "mode": "English editorial adaptation"
+    },
+    {
+      "path": "skills/product-photo-series/references/photo-directions.md",
+      "source_sha256": "1d3f4564192f5890cd87a81a858eba12eb398d89c9c8c6954388dc9492364121",
+      "english_sha256": "a1f39c271cc55b65f156d58703728d2fdcf7bf1eb2d16fdee5c0d98830e052f6",
+      "mode": "English editorial adaptation"
+    },
+    {
+      "path": "skills/product-photo-series/references/product-photo-examples.md",
+      "source_sha256": "70bb43965169903b04319ef23d2066a19c85d35df6aa76f4382eb2b81403a946",
+      "english_sha256": "1caee2d503a97ae4c8425821ff8688565cefbc2bf55bdd623b48244f60a51b5d",
+      "mode": "English editorial adaptation"
+    },
+    {
+      "path": "skills/shared/core-skeleton.md",
+      "source_sha256": "38b75957ce7a89d8e951441cd91a074d2f23e67ce2e1d31fb6c6a9c154e65f8b",
+      "english_sha256": "2da155809f71a7a5abb4d3d76cc6ab0421f83532160a3872fd5fe535ea976e0d",
+      "mode": "English editorial adaptation"
+    },
+    {
+      "path": "skills/shared/creative-planning.md",
+      "source_sha256": "934b18f06eae24108825eef36cfb005368c5d4e931826dfc75f7aa3abeafbee1",
+      "english_sha256": "94dd563b21fc16904c82cfc8c44e100a9c49f861a7d5ab5101f70cb6b3715086",
+      "mode": "English editorial adaptation"
+    },
+    {
+      "path": "skills/thumbnail-cover/SKILL.md",
+      "source_sha256": "1e45ba012cfc5a6d552abd8b5c4de9a0c8db58ba77870df11a6510c91116c09f",
+      "english_sha256": "987ab4fa13204fbce88d315c4703d1d67246a3ba89b783b6ec48dc6c7a627bde",
+      "mode": "English editorial adaptation"
+    },
+    {
+      "path": "skills/thumbnail-cover/references/thumbnail-craft.md",
+      "source_sha256": "93867452b606bc0b528a3368db6adfe87e290a2a2bb0c68d03dc77df7093d2c7",
+      "english_sha256": "90880a3398ee6a4348b38947d90816657a14428a61b1d353bc70da8a4b41d95d",
+      "mode": "English editorial adaptation"
+    },
+    {
+      "path": "skills/ugc-product-video/SKILL.md",
+      "source_sha256": "d3d372d035c74549363cfd54ff9c6578c02dbea78c0153046291e504dfd9b615",
+      "english_sha256": "581513164552d310b4ef4f7e427bac6d992ba44947f3e6bc7f97d9d0bb9643bf",
+      "mode": "English editorial adaptation"
+    },
+    {
+      "path": "skills/ugc-product-video/references/assembly-example.md",
+      "source_sha256": "7e8c9c9cfa7ffd142a7f183f0ab4042b353f1527b6a6a6d2e88eacb7511670c3",
+      "english_sha256": "a231804375d5ccbbf8b78eef49593f1844bee966cba25f24b38756e867445d42",
+      "mode": "English editorial adaptation"
+    },
+    {
+      "path": "skills/ugc-product-video/scripts/assemble_voiceover.py",
+      "source_sha256": "955721a8717d0511ef597dbbdda1ea242b8b51e6c8c347f646692aeb24d35941",
+      "english_sha256": "955721a8717d0511ef597dbbdda1ea242b8b51e6c8c347f646692aeb24d35941",
+      "mode": "unchanged helper"
+    }
+  ]
+}
