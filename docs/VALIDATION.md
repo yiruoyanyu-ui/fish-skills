@@ -1,5 +1,10 @@
 # Current Validation and Limitations
 
+## Added 2026-10-09: character sheet .3 and narrated multiscene video .6
+
+The two English sources are copied byte for byte from the evaluated local candidates; the shared execution contract is unchanged. See [purpose and scoped evidence](CHARACTER_STORY_PREVIEW.md) and the [content-bound record](evidence/character-story-preview-20261009.json). Both are experimental, on the preview channel. The new narrative source has fresh isolated planning evidence; actual targeted media comes from candidate.5 plans, with recorded executor corrections for umbrella input state/conditioning. Neither a full candidate.6 film nor stable superiority is certified. Existing four entries below are unchanged.
+
+
 ## Current candidates: product photos .6, covers .3, UGC .5, video recreation .5
 
 This is an experimental source revision authorized for GitHub main, not stable quality acceptance or production activation. English prose follows the current approved local sources. Product worked prompts and the current UGC helper retain source content/bytes; shared execution is reused against its unchanged Chinese source hash. The [three-Skill source map](evidence/english-source-map-20261008-candidates-6-3-5.json) identifies the exact inputs and outputs of that adaptation. The [recreation supplement map](evidence/english-source-map-20261008-reference-recreation-5.json) records the added source, copied unchanged from its approved English local file.

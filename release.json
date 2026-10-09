@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "0.1.0-preview.4",
+  "version": "0.1.0-preview.5",
   "channel": "preview",
   "skills": [
     {
@@ -25,6 +25,18 @@
       "id": "reference-recreation",
       "entry": "skills/reference-recreation/SKILL.md",
       "description": "Recreate a reference video, focusing on its actions, with the original or a replacement character. Use for motion transfer, dance reenactment and video action recreation; character images supply appearance while the video supplies movement. Analysis or prompt-only requests return text without generation. Still-image style matching and product photography use other workflows.",
+      "status": "experimental"
+    },
+    {
+      "id": "character-sheet",
+      "entry": "skills/character-sheet/SKILL.md",
+      "description": "Create a reference sheet showing the same character in requested views, expressions or outfits, and revise selected details while preserving the established identity. Use for character turnarounds and reusable visual references; a single portrait alone uses ordinary image creation.",
+      "status": "experimental"
+    },
+    {
+      "id": "narrated-multiscene-video",
+      "entry": "skills/narrated-multiscene-video/SKILL.md",
+      "description": "Produce a complete narrated story or explainer across multiple scenes, coordinating reusable visual references, shot order, voice and assembly. Use for multiscene stories and educational channel videos; product demonstrations use UGC and source-action transfer uses video recreation.",
       "status": "experimental"
     }
   ]

@@ -1,5 +1,8 @@
 # Sources and Boundaries
 
+The 2026-10-09 source preview adds character-sheet candidate.3 and narrated-multiscene-video candidate.6, copied unchanged from the evaluated English drafts. Shared execution is byte-identical to the current repository. Only the narrative assembly reference is added. [Purpose/evidence](CHARACTER_STORY_PREVIEW.md) and [hash record](evidence/character-story-preview-20261009.json) distinguish old artifacts, current planning and executor-assisted targeted media. No vendor backend or vendor-specific workflow code is copied in this update.
+
+
 ## Current source revision: four experimental Skills
 
 The current source includes the approved local product-photo-series v0.4-candidate.6, thumbnail-cover v0.3-candidate.3 and ugc-product-video v0.3-candidate.5 adaptations, plus reference-recreation v0.2-candidate.5 copied byte for byte from its current English local source. It includes required references and shared execution. Recreation is a single file using shared execution; no retired reference page or planning module is added. Standalone audio/API guides remain archived; portrait remains outside this upload.

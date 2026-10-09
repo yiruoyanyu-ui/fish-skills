@@ -2,7 +2,7 @@
 
 Versioned creative workflows for Fish tools, with read-only MCP retrieval of Markdown and references.
 
-**Current main-branch source: `0.1.0-preview.4`, four English experimental Skills (product photos candidate.6, covers candidate.3, UGC candidate.5, video recreation candidate.5).** This is a GitHub source update, not a GitHub Release, R2 channel activation or production Skill deployment. Existing clients using a published version still read that version. These candidates are available for inspection and experimentation, not certified as consistently better than their controls.
+**Current main-branch source: `0.1.0-preview.5`, six English experimental Skills.** Character sheet candidate.3 and narrated multiscene video candidate.6 join the four existing workflows. This is a GitHub source preview, not a GitHub Release, R2 activation or production Skill deployment. These workflows are available to try; consistent quality gains remain unproven.
 
 ## Explore
 
@@ -12,6 +12,8 @@ Versioned creative workflows for Fish tools, with read-only MCP retrieval of Mar
 | [Thumbnails / covers](skills/thumbnail-cover/SKILL.md) | Concepts, rendering, text and edits | Content relationships guide concept selection; local edits and split frames remain available. This revision has no new behavior or artifact acceptance. |
 | [UGC product video](skills/ugc-product-video/SKILL.md) | Faceless product demonstrations, narration and assembly | Deliver a complete product short. Use native narration when suitable; separate narration and local assembly are optional. Local helper regression does not establish product or audio quality. |
 | [Video recreation](skills/reference-recreation/SKILL.md) | Recreate reference-video actions with the original or a replacement character | The single-file candidate has only static review; no new action generation, behavior or output-quality acceptance. |
+| [Character sheet](skills/character-sheet/SKILL.md) | One character across requested views, expressions or outfits; reusable design references and selected edits | One own-left/right gain; a later reference edit moved a bow to the wrong ear. Not reliable exact turnaround/3D output. |
+| [Narrated multiscene video](skills/narrated-multiscene-video/SKILL.md) | Complete stories or explainers: scene plan, shared identity, starting states/actions, narration and assembly | Latest candidate adds real frame checks and start-frame input selection. Targeted clips show book opening and umbrella closure/storage after corrections; strict gaze order and complete-film acceptance remain pending. |
 
 Standalone speech, voice and API guides are [archived](archive/2026-10-08-retired/README.md) and excluded from the current catalog/payload. Portrait drafts remain outside this update.
 
@@ -49,8 +51,9 @@ This creates local package artifacts. It does not publish a Release, activate R2
 
 GitHub stores source. Published GitHub Releases/R2 packages distribute immutable versions. The Skills MCP reads instructions; a separately connected Fish media MCP executes authorized operations. Reading a Skill does not install a script, grant spending authorization or prove media quality.
 
-Edit relevant sources and references, synchronize catalog descriptions, commit and inspect CI. This source-only revision retains preview.4; a future immutable publication must satisfy its version and review requirements. Publication is a separate manual action under Actions → Publish Skills. Stable publication requires genuine content-bound review evidence. Retain all attempts, failures and costs; keep optimization cases separate from independent acceptance. Translation changes content hashes and does not transfer quality approval automatically.
+Edit relevant sources and references, synchronize catalog descriptions, commit and inspect CI. This source-only revision advances the catalog to preview.5; a future immutable publication must satisfy its version and review requirements. Publication is a separate manual action under Actions → Publish Skills. Stable publication requires genuine content-bound review evidence. Retain all attempts, failures and costs; keep optimization cases separate from independent acceptance. Translation changes content hashes and does not transfer quality approval automatically.
 
+- [Two new workflows: purpose, examples and evidence](docs/CHARACTER_STORY_PREVIEW.md)
 - [Current validation and limitations](docs/VALIDATION.md)
 - [Sources and translation boundary](docs/SOURCE.md)
 - [Source update notes](docs/RELEASE_NOTES.md)

@@ -1,3 +1,15 @@
+# 0.1.0-preview.5 — Character and narrated-story source preview
+
+Source-only update on 2026-10-09, authorized for GitHub.
+
+- Add character-sheet candidate.3 for consistent views, expressions and outfits of one character.
+- Add narrated-multiscene-video candidate.6 for complete stories/explainers with scene, identity, action-state, narration and assembly dependencies.
+- Keep the existing four workflows and shared execution contract unchanged; the active catalog has six English experimental entries.
+- Preserve known character-edit and gaze-order defects, planning/media evidence boundaries and paid attempt records in the scoped evidence summary.
+- No immutable Release, R2 channel activation or stable quality acceptance is included.
+
+---
+
 # 0.1.0-preview.4 — Four-Skill source with video recreation supplement
 
 Source-only update on 2026-10-08. No Release, R2 activation or production deployment is performed.

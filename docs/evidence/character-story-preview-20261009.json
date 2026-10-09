@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-09",
+  "catalog_version": "0.1.0-preview.5",
+  "status": "user-authorized experimental GitHub source preview; not stable quality approval",
+  "versions": {
+    "character-sheet": "candidate.3",
+    "narrated-multiscene-video": "candidate.6"
+  },
+  "copy_policy": "English sources copied unchanged; no translation or new source edits in publication",
+  "files": {
+    "character-sheet/SKILL.md": "7cf4751dc38d772e573e48cf5749939a928d3016a47a2a85cff09e3e41f6c735",
+    "narrated-multiscene-video/SKILL.md": "08c1bb6495e4c6be8c80eb66c9520c1f7bb0e95331d4b61aec2e1f795f205718",
+    "narrated-multiscene-video/references/assembly.md": "4e28f9ab7f5a205caecf67208c7a4f50db86bfefcdada91f96217934db9678db",
+    "shared/core-skeleton.md": "2da155809f71a7a5abb4d3d76cc6ab0421f83532160a3872fd5fe535ea976e0d"
+  },
+  "evidence": {
+    "character": "One independent own-left mapping benefit, later source edit moves rear bow incorrectly; exact identity/edit preservation remains unaccepted.",
+    "narrative": "9 isolated fresh Sonnet4.6 planning calls across two rounds; structural checks pass, semantic issues retained. Actual two clips derive candidate5 plans; umbrella has one paid frame correction and explicit input-conditioning correction. Book opens, but open-then-gaze order not clearly observed.",
+    "candidate6_holdout": "New drawer scene is coherent in both candidate5/candidate6; one planning run each, no extra gain demonstrated.",
+    "media_review": "Codex image/contact-sheet/end-frame inspection; human full-motion/listening pending",
+    "new_state_batch_cost": {
+      "fish_credits": 18750,
+      "image_calls": 5,
+      "video_calls": 2,
+      "tts_calls": 0,
+      "reported_creator_usd": 2.01855
+    }
+  },
+  "release": {
+    "github_source": true,
+    "immutable_release": false,
+    "r2_activation": false,
+    "quality_approved": false
+  }
+}
