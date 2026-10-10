@@ -1,3 +1,16 @@
+# 0.1.0-preview.6 — Portrait and character image preview
+
+English experimental preview authorized for GitHub publication on 2026-10-10.
+
+- Add portrait-character candidate.3 for fictional character portraits, avatars, editorial portraits and reference-based portrait edits.
+- Separate stable identity from the expression, action, styling, setting and composition of the current image.
+- Require an identity reference before promising likeness to a specific real person or established character.
+- Make visual review capability-gated. A text-only Agent delivers the result without inventing pixel-level findings.
+- Run targeted revision only for a concrete defect and within an authorized additional attempt; no automatic regenerate-until-satisfied loop.
+- Keep the workflow experimental. Static/package validation does not establish Agent behavior, likeness fidelity or artifact quality, and this GitHub prerelease does not activate R2 or production MCP retrieval.
+
+---
+
 # 0.1.0-preview.5 — Character and narrated-story source preview
 
 Source-only update on 2026-10-09, authorized for GitHub.

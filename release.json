@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "0.1.0-preview.5",
+  "version": "0.1.0-preview.6",
   "channel": "preview",
   "skills": [
     {
@@ -37,6 +37,12 @@
       "id": "narrated-multiscene-video",
       "entry": "skills/narrated-multiscene-video/SKILL.md",
       "description": "Produce a complete narrated story or explainer across multiple scenes, coordinating reusable visual references, shot order, voice and assembly. Use for multiscene stories and educational channel videos; product demonstrations use UGC and source-action transfer uses video recreation.",
+      "status": "experimental"
+    },
+    {
+      "id": "portrait-character",
+      "entry": "skills/portrait-character/SKILL.md",
+      "description": "Create or edit person-led still images such as fictional character portraits, avatars, editorial portraits and reference-based portrait changes. Use when identity, expression, styling, pose or continuity across images matters. A specific real person or established character requires a usable identity reference; without one, create a new character rather than promising likeness.",
       "status": "experimental"
     }
   ]

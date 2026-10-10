@@ -1,11 +1,15 @@
 # Sources and Boundaries
 
+The 2026-10-10 portrait-character candidate.3 is an English editorial adaptation of the local portrait draft, informed by the repository's existing character and media execution contracts. It contains no private evaluation images, user background, hidden vendor prompt, identity-training backend or claim about unobserved model controls. The main behavioral change makes visual review conditional on actual inspection capability and makes revision conditional on a concrete defect plus authorization. The detailed portrait directions and review checklist are optional references, not mandatory stages for every request.
+
+This preview publication validates source and package integrity only. It does not transfer quality acceptance from other Skills or establish identity fidelity, image quality, R2 activation or production deployment.
+
 The 2026-10-09 source preview adds character-sheet candidate.3 and narrated-multiscene-video candidate.6, copied unchanged from the evaluated English drafts. Shared execution is byte-identical to the current repository. Only the narrative assembly reference is added. [Purpose/evidence](CHARACTER_STORY_PREVIEW.md) and [hash record](evidence/character-story-preview-20261009.json) distinguish old artifacts, current planning and executor-assisted targeted media. No vendor backend or vendor-specific workflow code is copied in this update.
 
 
-## Current source revision: four experimental Skills
+## Earlier source revision: four experimental Skills
 
-The current source includes the approved local product-photo-series v0.4-candidate.6, thumbnail-cover v0.3-candidate.3 and ugc-product-video v0.3-candidate.5 adaptations, plus reference-recreation v0.2-candidate.5 copied byte for byte from its current English local source. It includes required references and shared execution. Recreation is a single file using shared execution; no retired reference page or planning module is added. Standalone audio/API guides remain archived; portrait remains outside this upload.
+That revision included the approved local product-photo-series v0.4-candidate.6, thumbnail-cover v0.3-candidate.3 and ugc-product-video v0.3-candidate.5 adaptations, plus reference-recreation v0.2-candidate.5 copied byte for byte from its English local source. It included required references and shared execution. Recreation was a single file using shared execution; no retired reference page or planning module was added. Standalone audio/API guides remained archived, and portrait was outside that earlier upload.
 
 The [three-Skill source map](evidence/english-source-map-20261008-candidates-6-3-5.json) records actual Chinese source and English destination hashes. The new [recreation supplement map](evidence/english-source-map-20261008-reference-recreation-5.json) records the actual recreation source and destination hashes; no prose was rewritten. The added recreation source matched the frozen approved snapshot and has static review only, with no new action-generation, behavior or output-quality validation. The earlier source map is retained unchanged as a historical record. Four full product-photo prompts are copied verbatim from the current source, including the narrower no-efficacy-claims instruction. The current UGC helper is copied byte for byte. Existing English shared execution is reused only after confirming that its Chinese source hash still matches the earlier translation source.
 

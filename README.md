@@ -2,7 +2,7 @@
 
 Versioned creative workflows for Fish tools, with read-only MCP retrieval of Markdown and references.
 
-**Current main-branch source: `0.1.0-preview.5`, six English experimental Skills.** Character sheet candidate.3 and narrated multiscene video candidate.6 join the four existing workflows. This is a GitHub source preview, not a GitHub Release, R2 activation or production Skill deployment. These workflows are available to try; consistent quality gains remain unproven.
+**Current preview: `0.1.0-preview.6`, seven English experimental Skills.** Portrait and character image candidate.3 joins the six existing workflows. The immutable GitHub prerelease distributes the same committed Skill payload. This publication does not activate R2 or a production Fish connection, and consistent creative-quality gains remain unproven.
 
 ## Explore
 
@@ -14,8 +14,9 @@ Versioned creative workflows for Fish tools, with read-only MCP retrieval of Mar
 | [Video recreation](skills/reference-recreation/SKILL.md) | Recreate reference-video actions with the original or a replacement character | The single-file candidate has only static review; no new action generation, behavior or output-quality acceptance. |
 | [Character sheet](skills/character-sheet/SKILL.md) | One character across requested views, expressions or outfits; reusable design references and selected edits | One own-left/right gain; a later reference edit moved a bow to the wrong ear. Not reliable exact turnaround/3D output. |
 | [Narrated multiscene video](skills/narrated-multiscene-video/SKILL.md) | Complete stories or explainers: scene plan, shared identity, starting states/actions, narration and assembly | Latest candidate adds real frame checks and start-frame input selection. Targeted clips show book opening and umbrella closure/storage after corrections; strict gaze order and complete-film acceptance remain pending. |
+| [Portrait and character image](skills/portrait-character/SKILL.md) | Create or edit person-led still images while preserving requested identity, expression, styling and continuity | Visual review is capability-gated; a text-only Agent must deliver without inventing inspection. English behavior and artifact acceptance remain pending. |
 
-Standalone speech, voice and API guides are [archived](archive/2026-10-08-retired/README.md) and excluded from the current catalog/payload. Portrait drafts remain outside this update.
+Standalone speech, voice and API guides are [archived](archive/2026-10-08-retired/README.md) and excluded from the current catalog/payload.
 
 ## Structure
 
@@ -51,7 +52,7 @@ This creates local package artifacts. It does not publish a Release, activate R2
 
 GitHub stores source. Published GitHub Releases/R2 packages distribute immutable versions. The Skills MCP reads instructions; a separately connected Fish media MCP executes authorized operations. Reading a Skill does not install a script, grant spending authorization or prove media quality.
 
-Edit relevant sources and references, synchronize catalog descriptions, commit and inspect CI. This source-only revision advances the catalog to preview.5; a future immutable publication must satisfy its version and review requirements. Publication is a separate manual action under Actions → Publish Skills. Stable publication requires genuine content-bound review evidence. Retain all attempts, failures and costs; keep optimization cases separate from independent acceptance. Translation changes content hashes and does not transfer quality approval automatically.
+Edit relevant sources and references, synchronize catalog descriptions, commit and inspect CI. This revision advances the catalog to preview.6. Stable publication still requires genuine content-bound review evidence. Retain all attempts, failures and costs; keep optimization cases separate from independent acceptance. Translation changes content hashes and does not transfer quality approval automatically.
 
 - [Two new workflows: purpose, examples and evidence](docs/CHARACTER_STORY_PREVIEW.md)
 - [Current validation and limitations](docs/VALIDATION.md)

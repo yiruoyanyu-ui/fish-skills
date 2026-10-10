@@ -1,5 +1,11 @@
 # Current Validation and Limitations
 
+## Added 2026-10-10: portrait-character candidate.3
+
+The English portrait workflow is included as an experimental preview. Static review covers frontmatter/catalog alignment, active references, capability-gated visual review and package integrity. The English adaptation has no fresh Agent behavior run, paid image generation or likeness/artifact acceptance. A successful generation job or downloadable file is not presented as visual quality evidence. Text-only hosts are instructed to deliver without inventing image inspection, and another generation/edit attempt requires a concrete defect and authorization.
+
+The preview is suitable for trying the fixed workflow. It does not certify likeness fidelity, stable cross-image identity, quality gains over an Agent without the Skill, R2 activation or production Fish availability.
+
 ## Added 2026-10-09: character sheet .3 and narrated multiscene video .6
 
 The two English sources are copied byte for byte from the evaluated local candidates; the shared execution contract is unchanged. See [purpose and scoped evidence](CHARACTER_STORY_PREVIEW.md) and the [content-bound record](evidence/character-story-preview-20261009.json). Both are experimental, on the preview channel. The new narrative source has fresh isolated planning evidence; actual targeted media comes from candidate.5 plans, with recorded executor corrections for umbrella input state/conditioning. Neither a full candidate.6 film nor stable superiority is certified. Existing four entries below are unchanged.
